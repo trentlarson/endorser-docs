@@ -20,47 +20,47 @@ Here are the verbs used for assertions -- many recorded in the app by default:
 
   - First, here some are actions one might initiate:
 
-    - "Join" shows attendance or membership in a group. Technically: [schema.org "JoinAction"](https://schema.org/JoinAction)
+    - "Join" shows attendance or membership in a group. Technically: `schema.org "JoinAction" <https://schema.org/JoinAction>`_
 
-    - "Give" shows transfer of ownership. Fungible items like money and time would be included as the 'object'. Technically: [schema.org "GiveAction"](https://schema.org/GiveAction)
+    - "Give" shows transfer of ownership. Fungible items like money and time would be included as the 'object'. Technically: `schema.org "GiveAction" <https://schema.org/GiveAction>`_
 
-      - "Donate" is an act of giving a gift, typically toward an entity rather than a project (as opposed to a "Grant" for a goal). It is similar to "Give" but used to explicitly record that these is no reciprocation. Technically: [schema.org "DonateAction"](https://schema.org/DonateAction)
+      - "Donate" is an act of giving a gift, typically toward an entity rather than a project (as opposed to a "Grant" for a goal). It is similar to "Give" but used to explicitly record that these is no reciprocation. Technically: `schema.org "DonateAction" <https://schema.org/DonateAction>`_
 
-      - "Grant" represents donations toward a goal or project (as opposed to "Donate" to an entity for whatever purpose they choose). (Note that this isn't yet fully accepted at schema.org.) Technically: [schema.org "Grant"](https://schema.org/Grant)
+      - "Grant" represents donations toward a goal or project (as opposed to "Donate" to an entity for whatever purpose they choose). (Note that this isn't yet fully accepted at schema.org.) Technically: `schema.org "Grant" <https://schema.org/Grant>`_
 
-    - "Loan Or Credit" represents temporary transfer of money. Technically: [schema.org "LoanOrCredit"](https://schema.org/LoanOrCredit)
+    - "Loan Or Credit" represents temporary transfer of money. Technically: `schema.org "LoanOrCredit" <https://schema.org/LoanOrCredit>`_
 
-    - "Offer" proposes a transfer or service, often with conditions or a price. When the proposal is fulfilled, there is a resulting "Give" or "Donate" or more complicated transfer such as "Trade". Technically: [schema.org "Offer"](https://schema.org/Offer) (The opposite is a ["Demand"](https://schema.org/Demand).)
+    - "Offer" proposes a transfer or service, often with conditions or a price. When the proposal is fulfilled, there is a resulting "Give" or "Donate" or more complicated transfer such as "Trade". Technically: `schema.org "Offer" <https://schema.org/Offer>`_ (The opposite is a `"Demand" <https://schema.org/Demand>`_.)
 
-    - "Plan" proposes some activity to achieve a result. This is different from "Offer" because it is not targeted toward a particular recipient; this is useful for advertising and proposing an initiative for others to join. Technically: [schema.org "PlanAction"](https://schema.org/PlanAction)
+    - "Plan" proposes some activity to achieve a result. This is different from "Offer" because it is not targeted toward a particular recipient; this is useful for advertising and proposing an initiative for others to join. Technically: `schema.org "PlanAction" <https://schema.org/PlanAction>`_
 
-    - "Project" is for a large-scale initiative, typically associated with an organization for some long-term benefit. Technically: [schema.org "Project" proposal](https://schema.org/Project)
+    - "Project" is for a large-scale initiative, typically associated with an organization for some long-term benefit. Technically: `schema.org "Project" proposal <https://schema.org/Project>`_
 
-    - "Watch" says that something was seen. Technically: [schema.org "WatchAction"](https://schema.org/WatchAction)
+    - "Watch" says that something was seen. Technically: `schema.org "WatchAction" <https://schema.org/WatchAction>`_
 
-  - "Agree" says that the user concurs with some other assertion. Technically: [schema.org "AgreeAction"](https://schema.org/AgreeAction)
+  - "Agree" says that the user concurs with some other assertion. Technically: `schema.org "AgreeAction" <https://schema.org/AgreeAction>`_
 
-  - "Accept" signals that someone accepts some contract or pledge. (This could be used to state alignment to terms for a later transfer. This is different from "Agree" because it signals a commitment, eg. to a policy or proposal. See [schema.org](https://schema.org/) for concrete definitions.) Technically: [schema.org "AcceptAction"](https://schema.org/AcceptAction)
+  - "Accept" signals that someone accepts some contract or pledge. (This could be used to state alignment to terms for a later transfer. This is different from "Agree" because it signals a commitment, eg. to a policy or proposal. See `schema.org <https://schema.org/>`_ for concrete definitions.) Technically: `schema.org "AcceptAction" <https://schema.org/AcceptAction>`_
 
-    - There is also a "Take" to show that something has been received or redeemed, which is the opposite of "Give"; however, in these applications, a recipient shows fulfilment of a previous "Give" action with an "AgreeAction" where the 'object' has the originating "Give" action (or 'identifier'). Technically: [schema.org "TakeAction"](https://schema.org/TakeAction).
+    - There is also a "Take" to show that something has been received or redeemed, which is the opposite of "Give"; however, in these applications, a recipient shows fulfilment of a previous "Give" action with an "AgreeAction" where the 'object' has the originating "Give" action (or 'identifier'). Technically: `schema.org "TakeAction" <https://schema.org/TakeAction>`_.
 
-    - There is also ["Send"](https://schema.org/SendAction) and ["Receive"](https://schema.org/ReceiveAction) to signify that an 'object' has been transported, but they don't indicate any transfer of ownership (and are not used in these applications).
+    - There is also `"Send" <https://schema.org/SendAction>`_ and `"Receive" <https://schema.org/ReceiveAction>`_ to signify that an 'object' has been transported, but they don't indicate any transfer of ownership (and are not used in these applications).
 
 Hopefully it's clear how to apply those assertions to the scenarios above:
 
-  1. ["Give"](https://schema.org/GiveAction) an 'object' to a 'recipient', or ["Offer"](https://schema.org/Offer) an 'itemOffered'... time or money or even a ["Service"](https://schema.org/Service).
+  1. `"Give" <https://schema.org/GiveAction>`_ an 'object' to a 'recipient', or `"Offer" <https://schema.org/Offer>`_ an 'itemOffered'... time or money or even a `"Service" <https://schema.org/Service>`_.
 
-    - One could also ["Grant"](https://schema.org/Grant), though that is new to the schema.
+    - One could also `"Grant" <https://schema.org/Grant>`_, though that is new to the schema.
 
-  1. ["Ask"](https://schema.org/AskAction) for 'object', or ["Demand"](https://schema.org/Demand) some help or resource 'itemOffered'.
+  1. `"Ask" <https://schema.org/AskAction>`_ for 'object', or `"Demand" <https://schema.org/Demand>`_ some help or resource 'itemOffered'.
 
-  1. ["Offer"](https://schema.org/Offer) some help or resource, eg. some 'eligibleQuantity' of 'itemOffered' at a 'price' when 'availabilityStarts'.
+  1. `"Offer" <https://schema.org/Offer>`_ some help or resource, eg. some 'eligibleQuantity' of 'itemOffered' at a 'price' when 'availabilityStarts'.
 
-    - One could also ["LoanOrCredit"](https://schema.org/LoanOrCredit) some 'amount' of 'currency' for 'loanTerm'.
+    - One could also `"LoanOrCredit" <https://schema.org/LoanOrCredit>`_ some 'amount' of 'currency' for 'loanTerm'.
 
-  1. ["Give"](https://schema.org/GiveAction) to say that a transfer is done. Senders use this to claim that they transfer ownership to someone else.
+  1. `"Give" <https://schema.org/GiveAction>`_ to say that a transfer is done. Senders use this to claim that they transfer ownership to someone else.
 
-  1. ["Agree"](https://schema.org/AgreeAction) to confirm delivery of a "GiveAction" which is included as the 'object'. This is how recipients signal they've received whatever was given or donated.
+  1. `"Agree" <https://schema.org/AgreeAction>`_ to confirm delivery of a "GiveAction" which is included as the 'object'. This is how recipients signal they've received whatever was given or donated.
 
 In our Endorser app, you can try many of these such as Time or Money Donations, or Credit.
 
@@ -74,9 +74,9 @@ Other Notes
 
 - Some have tackled these problems with tokens; that's a valid approach as well, with upsides of broader markets but downsides of complicated issuance and less private data.
 
-  - [Ying](https://yingme.co/) is building an app with a currency built in.
+  - `Ying <https://yingme.co/>`_ is building an app with a currency built in.
 
-  - [Let's B More](https://letsbmore.timebanks.org/) has a search through their offerings.
+  - `Let's B More <https://letsbmore.timebanks.org/>`_ has a search through their offerings.
 
-- There are signing technologies for cash without a central blockchain: ["Untraceable Off-line Cash in Wallets with Observers" by Stefan Brands](courses.csail.mit.edu/6.857/2009/handouts/untraceable.pdf) shows one way... this ["note on blind signature schemes"](https://blog.cryptographyengineering.com/a-note-on-blind-signature-schemes/) has other links but most are broken. I believe there is more recent work as well but it's hard to find.
+- There are signing technologies for cash without a central blockchain: `"Untraceable Off-line Cash in Wallets with Observers" by Stefan Brands <courses.csail.mit.edu/6.857/2009/handouts/untraceable.pdf>`_ shows one way... this `"note on blind signature schemes" <https://blog.cryptographyengineering.com/a-note-on-blind-signature-schemes/>`_ has other links but most are broken. I believe there is more recent work as well but it's hard to find.
 

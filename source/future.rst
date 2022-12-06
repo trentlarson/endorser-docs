@@ -37,19 +37,19 @@ Future
 
 
 
-- [BBS+ signature schemes](https://mattrglobal.github.io/bbs-signatures-spec/) and [zero-knowledge proofs](https://en.wikipedia.org/wiki/Zero-knowledge_proof) enable you to send hidden data and later reveal parts of it or even just prove that it fits your purpose without revealing the data. (An example is proving that you're over 21 without revealing your exact age. Magic, right?) We can use these to iterate our way to better server-side privacy. This may be what Evernym calls "safe signatures", but we've got to understand this more.
+- `BBS+ signature schemes <https://mattrglobal.github.io/bbs-signatures-spec/>`_ and `zero-knowledge proofs <https://en.wikipedia.org/wiki/Zero-knowledge_proof>`_ enable you to send hidden data and later reveal parts of it or even just prove that it fits your purpose without revealing the data. (An example is proving that you're over 21 without revealing your exact age. Magic, right?) We can use these to iterate our way to better server-side privacy. This may be what Evernym calls "safe signatures", but we've got to understand this more.
 
 - Build on another platform for transport:
 
-  - [Element](https://element.io)
+  - `Element <https://element.io>`_
 
-  - [Keybase](https://keybase.io)
+  - `Keybase <https://keybase.io>`_
 
-  - [Signal](https://signal.org). It's amazing. For example, they store [minimal information about your contacts on their servers](https://signal.org/blog/private-contact-discovery/), such that they cannot even tell who are your contacts while still letting you find ones that are in your address book. Add to that their work with [anonymous credentials](https://eprint.iacr.org/2019/1416.pdf), groups, and payments (the latter is still in progress) and that seems the best platform on which to build these features. We'll go there as soon as we can figure out how.
+  - `Signal <https://signal.org>`_. It's amazing. For example, they store `minimal information about your contacts on their servers <https://signal.org/blog/private-contact-discovery/>`_, such that they cannot even tell who are your contacts while still letting you find ones that are in your address book. Add to that their work with `anonymous credentials <https://eprint.iacr.org/2019/1416.pdf>`_, groups, and payments (the latter is still in progress) and that seems the best platform on which to build these features. We'll go there as soon as we can figure out how.
 
-  - [Holochain](https://www.holochain.org/)
+  - `Holochain <https://www.holochain.org/>`_
 
-  - [Backchannel](https://www.inkandswitch.com/backchannel/)
+  - `Backchannel <https://www.inkandswitch.com/backchannel/>`_
 
 - Let's move more functionality to our own devices. An always-connected service makes things convenient, but we should all have the option of owning our data and managing it on our own phones and computers. We could connect through bluetooth or a local network when in close proximity. A search request might be sent out and results could trickle back in as devices respond. It would be fun!
 
@@ -61,18 +61,18 @@ Future
 Outside Work
 ------------
 
-- [Self-Sovereign Identity](https://en.wikipedia.org/wiki/Self-sovereign_identity) is a set of emerging standards based on cryptography and specifications like [Decentralized IDs](https://w3c.github.io/did-core/) (DIDs) and [Verifiable Credentials](https://www.w3.org/TR/vc-data-model/) (VCs). [There are many SSI wallets](https://github.com/Gimly-Blockchain/ssi-wallets). (Our mobile app creates both DIDs and VCs.)
+- `Self-Sovereign Identity <https://en.wikipedia.org/wiki/Self-sovereign_identity>`_ is a set of emerging standards based on cryptography and specifications like `Decentralized IDs <https://w3c.github.io/did-core/>`_ (DIDs) and `Verifiable Credentials <https://www.w3.org/TR/vc-data-model/>`_ (VCs). `There are many SSI wallets <https://github.com/Gimly-Blockchain/ssi-wallets>`_. (Our mobile app creates both DIDs and VCs.)
 
 - https://mobilecoin.com/cryptorenaissance - slide at 4:45, 2-minute description starting at 3:00. See also https://patternsinthevoid.net/hyphae/hyphae.pdf
 
 
-- Besides [schema.org](https://schema.org/), there are many other vocabularies to use: [Linked Open Vocabularies (LOV)](https://lov.linkeddata.es/dataset/lov/) is a great place to start looking (though some of the pointers no longer work).
+- Besides `schema.org <https://schema.org/>`_, there are many other vocabularies to use: `Linked Open Vocabularies (LOV) <https://lov.linkeddata.es/dataset/lov/>`_ is a great place to start looking (though some of the pointers no longer work).
 
 - Other projects that are close but don't cover all our use-cases:
 
-  - [Other wallets](https://github.com/Gimly-Blockchain/ssi-wallets) allow creation of VCs but are typically for organizational use.
+  - `Other wallets <https://github.com/Gimly-Blockchain/ssi-wallets>`_ allow creation of VCs but are typically for organizational use.
 
-  - The paper [Bottom-up Trust Registry in Self Sovereign Identity](https://arxiv.org/pdf/2208.04624.pdf) explains one way to create a registry for issuers, but we care more about managing your personal trust network.
+  - The paper `Bottom-up Trust Registry in Self Sovereign Identity <https://arxiv.org/pdf/2208.04624.pdf>`_ explains one way to create a registry for issuers, but we care more about managing your personal trust network.
 
   - Yingme.co has some time-banking, but it's still working on the onboarding and how to share the technology.
 
@@ -85,4 +85,4 @@ Outside Work
 Selected History
 ----------------
 
-- Always appreciate how far we've come. :-) For example, this used to be [based on uPort](https://github.com/trentlarson/uport-demo/blob/5c3d7fcb751ad34ed10ebb7adab650b2cfebb7d1/src/components/Welcome.js#L96). The [first shared transaction was on Jan 2019](https://endorser.ch/reportClaim?claimId=01D25AVGQG1N8E9JNGK7C7DZRD) (before the Verified Credentials Working Draft was submitted).
+- Always appreciate how far we've come. :-) For example, this used to be `based on uPort <https://github.com/trentlarson/uport-demo/blob/5c3d7fcb751ad34ed10ebb7adab650b2cfebb7d1/src/components/Welcome.js#L96>`_. The `first shared transaction was on Jan 2019 <https://endorser.ch/reportClaim?claimId=01D25AVGQG1N8E9JNGK7C7DZRD>`_ (before the Verified Credentials Working Draft was submitted).
