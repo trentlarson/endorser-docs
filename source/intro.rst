@@ -94,7 +94,7 @@ Other Content
 
   - There is `a diagram for a simple workflow <https://whimsical.com/liberty-certification-KS6ocCfbFWSPhY4uKFWsTx>`_.
 
-  - There are [Sample Claims](/doc-sample-claims) to scan into the mobile app.
+  - There are `sample claims <https://endorser.ch/doc-sample-claims>`_ to scan into the mobile app.
 
 
 Finally, see :doc:`Future, Past, and Related work <future>`.
