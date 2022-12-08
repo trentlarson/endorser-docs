@@ -8,7 +8,6 @@ Welcome to Endorser Server Documentation
    :caption: Contents:
 
    intro
-   tutorial
    pledge
    witness
    discovery

@@ -5,7 +5,7 @@ Intro to Community Credentials
 Quick Start
 -----------
 
-  - See the :doc:`tutorial`.
+  - See the `Tutorial Videos <https://endorser.ch/doc-tutorial>`_.
 
   - The mobile app is on `Google Play`_ and `Apple's App Store`_.
 
@@ -78,7 +78,7 @@ Here are some other details about the current system, for the technically-minded
 Other Content
 -------------
 
-  - :doc:`These demos <tutorial>` show the user experience quickly.
+  - `These demos <https://endorser.ch/doc-tutorial>`_ show the user experience quickly.
 
   - Source Code
 
