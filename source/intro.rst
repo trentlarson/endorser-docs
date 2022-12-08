@@ -28,9 +28,9 @@ This is a set of projects to do just that, with the following features:
 Scenarios
 ---------
 
-  - [Commit time or other resources (conditionally or unconditionally), then verify their follow-through.](/doc-transactions)
+  - Commit time or other resources (conditionally or unconditionally), then verify their follow-through. See :doc:`transactions`.
 
-  - [Find other people in your community with similar interests and even goals.](/doc-discovery)
+  - Find other people in your community with similar interests and even goals. See :doc:`discovery`.
 
 
 
@@ -41,7 +41,7 @@ Scenarios
 Implementation
 --------------
 
-See the [Home Page](/) to install our app.
+See the `Endorser home page <https://endorser.ch>`_ to install our app.
 
 The goals of this implementation are as follows:
 
@@ -59,13 +59,13 @@ The goals of this implementation are as follows:
 
 Credentials and claims are good primitives for a wide range of functions such as: voting, workflows, membership, and even transactions.
 
-  - [Advertise & discover skills & services.](/doc-discovery)
+  - :doc:`Advertise & discover skills & services. <discovery>`
 
-  - [Record time commitments (or any transactions).](/doc-transactions)
+  - :doc:`Record time commitments (or any transactions). <transactions>`
 
-  - [Record pledges & membership.](/doc-pledge)
+  - :doc:`Record pledges & membership. <pledge>`
 
-  - [Show appreciation semi-privately.](/doc-witness)
+  - :doc:`Show appreciation semi-privately. <witness>`
 
 Here are some other details about the current system, for the technically-minded:
 
@@ -73,29 +73,29 @@ Here are some other details about the current system, for the technically-minded
 
 * The mobile app is very general-purpose so it is flexible, but not yet entirely user-friendly. It demonstrates the capabilities, and now we can start creating domain-specific apps that are powerful but also easy to use.
 
-* The next primary enhancement is to store & share claims & IDs directly from personal devices. (The only current option is to share your IDs with a shared server -- which is useful but which is not the end goal.) New encryption and selective disclosure approaches will allow you to share only what you want other people to discover, and provide various levels of access for them to contact you... all controlled by your devices, provably. We intend to migrate to that technology when it is more readily available; for now we offer this service and require the minimal amount of knowledge while still providing value. See [Future](/doc-future) Work for more details.
+* The next primary enhancement is to store & share claims & IDs directly from personal devices. (The only current option is to share your IDs with a shared server -- which is useful but which is not the end goal.) New encryption and selective disclosure approaches will allow you to share only what you want other people to discover, and provide various levels of access for them to contact you... all controlled by your devices, provably. We intend to migrate to that technology when it is more readily available; for now we offer this service and require the minimal amount of knowledge while still providing value. See :doc:`future` for more details.
 
 Other Content
 -------------
 
-  - [These demos](/doc-tutorial) show the user experience quickly.
+  - :doc:`These demos <tutorial>` show the user experience quickly.
 
   - Source Code
 
-    - the <a href="https://github.com/trentlarson/endorser-ch">server that stores and reports on claims</a>
+    - the `server that stores and reports on claims <https://github.com/trentlarson/endorser-ch>`_
 
-    - the <a href="https://github.com/trentlarson/endorser-mobile">mobile app to create verifiable credentials</a>
+    - the `mobile app to create verifiable credentials <https://github.com/trentlarson/endorser-mobile>`_
 
-    - this <a href="https://github.com/trentlarson/uport-demo">website</a>
+    - this `website <https://github.com/trentlarson/uport-demo>`_
 
-  - Mobile app is in the [Apple Store](https://apps.apple.com/us/app/endorser-mobile/id1556368693) and the [Play Store](https://play.google.com/store/apps/details?id=ch.endorser.mobile).
+  - Mobile app is in the `Apple Store <https://apps.apple.com/us/app/endorser-mobile/id1556368693>`_ and the `Play Store <https://play.google.com/store/apps/details?id=ch.endorser.mobile>`_
 
-  - The [Privacy Policy](/privacy-policy) emphasizes these concepts.
+  - The `Endorser.ch Privacy Policy <https://endorser.ch/privacy-policy>`_ emphasizes these concepts.
 
-  - There is <a href="https://whimsical.com/liberty-certification-KS6ocCfbFWSPhY4uKFWsTx">a diagram for a simple workflow.</a>
+  - There is `a diagram for a simple workflow <https://whimsical.com/liberty-certification-KS6ocCfbFWSPhY4uKFWsTx>`_.
 
   - There are [Sample Claims](/doc-sample-claims) to scan into the mobile app.
 
 
-Finally, see [Future, Past, and Related work](/doc-future).
+Finally, see :doc:`Future, Past, and Related work <future>`.
 

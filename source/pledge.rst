@@ -20,9 +20,9 @@ So we can apply that to the scenarios above, available in the app:
 
 To get confirmation from people other than youself, search in the app for those with the right authority. If you cannot see the details, ask others personally for a connection... you need to be connected somehow.
 
-##### Outside Work
+**Other References**
 
-Pledges are used in many places:
+Pledges are used in multiple organizations:
 
   - The `Developer Certificate of Origin <https://developercertificate.org/>`_ is a pledge that the developer created their contribution, and git projects can enforce that pledge, eg. at `GitHub <https://github.com/apps/dco>`_.
 

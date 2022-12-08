@@ -1,6 +1,6 @@
 
-Future
-======
+Future Work
+===========
 
 - For self ownership of credentials
   - Current: IDs are not revealed outside server, are custodied on server (trusting admins of server)

@@ -64,13 +64,13 @@ Hopefully it's clear how to apply those assertions to the scenarios above:
 
 In our Endorser app, you can try many of these such as Time or Money Donations, or Credit.
 
-Other Notes
+**Other Notes**
 
 - For future work, we would like to see totals of credits & promise held, or know whether some credit has been redeemed.
 
 - In peer-to-peer commitments that remain in a community, it could be useful to verify a history of transactions, possibly between each pair. That could benefit from a merkle tree to ensure that people have a consistent history, thus creating a pairwise private blockchain.
 
-##### Other References
+**Other References**
 
 - Some have tackled these problems with tokens; that's a valid approach as well, with upsides of broader markets but downsides of complicated issuance and less private data.
 

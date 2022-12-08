@@ -20,7 +20,7 @@ Hopefully it's clear how to apply those assertions to the scenarios above, avail
 
   1. Search for any criteria. If you cannot see them directly, then hopefully the skill or project already exists and someone can connect you together. If no DIDs are visible at all in your search results, that means that nobody visible... neither directly nor in your shared network to introduce you to each other.
 
-##### Other References
+**Other References**
 
 - `Daniel Hardman <https://www.linkedin.com/in/danielhardman/>`_ wrote `a paper about the ideal solutions for discovery`_ (with `an introductory slide deck`_).
 
