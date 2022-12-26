@@ -2,40 +2,55 @@
 Future Work
 ===========
 
-- For self ownership of credentials
+- For self-ownership of credentials:
+
   - Current: IDs are not revealed outside server, are custodied on server (trusting admins of server)
 
   - Future Option: move data to personal devices
+
+    - offers & transactions & searches can be selectively allowed & optionally transmitted
+
     - searches can be sent as hashes (to avoid revealing claim to whole network)
-    - searches can be allowed selectively & transmitted
+
+    - `Briar <https://briarproject.org/>`_, `Sphinx Chat <https://sphinx.chat/>`_
+
     - downsides: intermittent availability
 
   - Future Option: move to BBS+ signatures (simple encryption checks)
+
     - previous claims & confirmations could be signed again
+
     - able to keep proof of time for hash
+
     - downsides: many previous confirmations would not be signed, migrated claim timestamps wouldn't have global proof of time
 
   - Future Option: move to homomorphic encryption (richer predicates than BBS+ signatures)
+
     - to migrate, previous claims & confirmations could be signed again
+
     - able to keep proof of time for hash
+
     - downsides: many previous confirmations would not be signed, migrated claim timestamps wouldn't have global proof of time
 
 - For proof of time:
+
   - Current: merkle tree backed by other claims
 
   - Future Option: merkle tree is anchored in a blockchain
+
     - downsides: items previous to start don't have exact global proof of time
 
-- For private searches
+- For private searches:
+
   - Current: trusting admins of server
+
   - Future Option: homomorphic encryption
+
   - Future Option: DID Comm
 
-- For translation into cryptocurrency wallet
-  - able to sign transactions with same key
+- `KERI <https://keri.one>`_ for better key sharing and rotation.
 
-
-
+- `ACDC <https://trustoverip.github.io/tswg-acdc-specification/draft-ssmith-acdc.html>`_ for better structure and verifiability in data chains.
 
 - `BBS+ signature schemes <https://mattrglobal.github.io/bbs-signatures-spec/>`_ and `zero-knowledge proofs <https://en.wikipedia.org/wiki/Zero-knowledge_proof>`_ enable you to send hidden data and later reveal parts of it or even just prove that it fits your purpose without revealing the data. (An example is proving that you're over 21 without revealing your exact age. Magic, right?) We can use these to iterate our way to better server-side privacy. This may be what Evernym calls "safe signatures", but we've got to understand this more.
 
@@ -51,9 +66,11 @@ Future Work
 
   - `Backchannel <https://www.inkandswitch.com/backchannel/>`_
 
-- Let's move more functionality to our own devices. An always-connected service makes things convenient, but we should all have the option of owning our data and managing it on our own phones and computers. We could connect through bluetooth or a local network when in close proximity. A search request might be sent out and results could trickle back in as devices respond. It would be fun!
+- Leverage browsers and existing wallets.
 
-- Create or leverage a browser extension. A friend told how easy it is to use MetaMask for various platforms, and how inconvenient it is to have to pull out a phone to do work.
+  - The more tooling around the same concepts, the broader can be the ecosystem.
+
+  - We've received feedback on how easy it is to use `MetaMask <https://metamask.io/>`_ for various platforms, and how inconvenient it is to have to pull out a phone to do work.
 
 - Although this is a labor of love and (we hope) a good foundation to support community work, we'd like to get resources to support this development effort. Great user-interfaces take time and effort to create, so that's worth something. We can also build more infrastructure that cater to organizations who could pay.
 

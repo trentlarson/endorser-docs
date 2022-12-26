@@ -16,7 +16,9 @@ Quick Start
 Overview
 --------
 
-We support the growth of community networks at whatever level of privacy you prefer. Meta (AKA Facebook) has created an engaging user interface around networks but they control it all; Google allows more control but still has access to your data and shares it. Let's build networks where individuals have as much control as possible while still allowing discovery.
+We support the growth of community networks at whatever level of privacy you prefer.
+
+  Meta (AKA Facebook) has created an engaging user interface around networks but they control it all; Google allows more control but still has access to your data and shares it. Let's build networks where individuals have as much control as possible while still allowing discovery.
 
 This is a set of projects to do just that, with the following features:
 
@@ -28,7 +30,7 @@ Said more technically:
 
 - Issue credentials about yourself and your community, easily & verifiably. This is done based on standards for Verifiable Credentials that use personal public & private keys, with apps to make the process as simple as possible.  Most other approaches assume mature, centralized credential authorities; there is a place for those, but there are even more uses for an evolving credential system based on existing networks.
 
-- Share them, then search to network with people you know -- with permissions. When credentials are saved to our server, people may then see claims about others -- but only if allowed to see them. But there's one further possibility: if someone is two friends away, then your common friend can introduce you. This allows for discovery: although you may not have access to other people's claims, if you are linked by a contact then you can use other means to find that information, depending on the comfort level of your shared contact. This is all done [local-first](https://www.inkandswitch.com/local-first.html).
+- Share them, then search to network with people you know -- with the right permissions. When credentials are saved to our server, people may then see claims about others, if allowed by the originator. There's one further possibility: if someone is two friends away, then your common friend can introduce you. This allows for discovery: although you may not have access to other people's claims, if you are linked by a contact then you can use other means to find that information; you must communicate with your shared contact some other way to get an introduction. This is all done `local-first <https://www.inkandswitch.com/local-first.html>`_.
 
 
 Scenarios
