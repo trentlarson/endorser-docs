@@ -12,9 +12,9 @@ How can we share with someone a signed record of seeing them, revealing our grat
 
     * `"WatchAction" by schema.org <https://schema.org/WatchAction>`_ is meant for watching media (eg. a movie).
 
-    * `"Observation" by the W3c Sensor Ontology <https://www.w3.org/TR/vocab-ssn/#SOSAObservation>`_ is close but meant for mechanical devices,
+    * `"Observation" by the W3c Sensor Ontology <https://www.w3.org/TR/vocab-ssn/#SOSAObservation>`_ is close but meant for mechanical devices.
 
-    * `"Witness" by the Library of Congress <https://id.loc.gov/vocabulary/relators/wit.html>`_ is for voices in media
+    * `"Witness" by the Library of Congress <https://id.loc.gov/vocabulary/relators/wit.html>`_ is for voices in media.
 
     * Unfortunately, most of the other `"observe" actions at LOV <https://lov.linkeddata.es/dataset/lov/terms?q=observe>`_ are no longer active.
 
