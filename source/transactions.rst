@@ -6,15 +6,15 @@ How do we represent resource commitments, and then check delivery on those promi
 
 Here are a few scenarios:
 
-  1. I donate time (or money or other resources) to someone.
+  #. I donate time (or money or other resources) to someone.
 
-  1. Someone makes a request, possibly in trade.
+  #. Someone makes a request, possibly in trade.
 
-  1. I offer to give resources at some future date, possibly after conditions are met.
+  #. I offer to give resources at some future date, possibly after conditions are met.
 
-  1. I delivered those resources.
+  #. I delivered those resources.
 
-  1. Someone confirms that I delivered. In other words, they agree that I followed through on my commitment.
+  #. Someone confirms that I delivered. In other words, they agree that I followed through on my commitment.
 
 Here are the verbs used for assertions -- many recorded in the app by default:
 
@@ -48,19 +48,19 @@ Here are the verbs used for assertions -- many recorded in the app by default:
 
 Hopefully it's clear how to apply those assertions to the scenarios above:
 
-  1. `"Give" <https://schema.org/GiveAction>`_ an 'object' to a 'recipient', or `"Offer" <https://schema.org/Offer>`_ an 'itemOffered'... time or money or even a `"Service" <https://schema.org/Service>`_.
+  #. `"Give" <https://schema.org/GiveAction>`_ an 'object' to a 'recipient', or `"Offer" <https://schema.org/Offer>`_ an 'itemOffered'... time or money or even a `"Service" <https://schema.org/Service>`_.
 
     - One could also `"Grant" <https://schema.org/Grant>`_, though that is new to the schema.
 
-  1. `"Ask" <https://schema.org/AskAction>`_ for 'object', or `"Demand" <https://schema.org/Demand>`_ some help or resource 'itemOffered'.
+  #. `"Ask" <https://schema.org/AskAction>`_ for 'object', or `"Demand" <https://schema.org/Demand>`_ some help or resource 'itemOffered'.
 
-  1. `"Offer" <https://schema.org/Offer>`_ some help or resource, eg. some 'eligibleQuantity' of 'itemOffered' at a 'price' when 'availabilityStarts'.
+  #. `"Offer" <https://schema.org/Offer>`_ some help or resource, eg. some 'eligibleQuantity' of 'itemOffered' at a 'price' when 'availabilityStarts'.
 
     - One could also `"LoanOrCredit" <https://schema.org/LoanOrCredit>`_ some 'amount' of 'currency' for 'loanTerm'.
 
-  1. `"Give" <https://schema.org/GiveAction>`_ to say that a transfer is done. Senders use this to claim that they transfer ownership to someone else.
+  #. `"Give" <https://schema.org/GiveAction>`_ to say that a transfer is done. Senders use this to claim that they transfer ownership to someone else.
 
-  1. `"Agree" <https://schema.org/AgreeAction>`_ to confirm delivery of a "GiveAction" which is included as the 'object'. This is how recipients signal they've received whatever was given or donated.
+  #. `"Agree" <https://schema.org/AgreeAction>`_ to confirm delivery of a "GiveAction" which is included as the 'object'. This is how recipients signal they've received whatever was given or donated.
 
 In our Endorser app, you can try many of these such as Time or Money Donations, or Credit.
 

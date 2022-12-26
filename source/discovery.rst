@@ -6,9 +6,9 @@ How do we discover others with certain interests or skills?
 
 Here are a few scenarios:
 
-  1. I want to publish a project, problem, or skill for someone to find it.
+  #. I want to publish a project, problem, or skill for someone to find it.
 
-  1. I want to find someone with certain interests or skills.
+  #. I want to find someone with certain interests or skills.
 
 Here are the verbs used for assertions:
 
@@ -16,9 +16,9 @@ Here are the verbs used for assertions:
 
 Hopefully it's clear how to apply those assertions to the scenarios above, available in the app:
 
-  1. Create a `Person <https://schema.org/Person>`_ and include any descriptive words about the project, problem, or skill.
+  #. Create a `Person <https://schema.org/Person>`_ and include any descriptive words about the project, problem, or skill.
 
-  1. Search for any criteria. If you cannot see them directly, then hopefully the skill or project already exists and someone can connect you together. If no DIDs are visible at all in your search results, that means that nobody visible... neither directly nor in your shared network to introduce you to each other.
+  #. Search for any criteria. If you cannot see them directly, then hopefully the skill or project already exists and someone can connect you together. If no DIDs are visible at all in your search results, that means that nobody visible... neither directly nor in your shared network to introduce you to each other.
 
 **Other References**
 
