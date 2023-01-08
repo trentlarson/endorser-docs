@@ -1,6 +1,6 @@
 
-Transactions
-============
+Transactions & Projects
+=========================
 
 How do we represent resource commitments, and then check delivery on those promises?
 
@@ -59,7 +59,7 @@ Example:
     "@context": "https://schema.org",
     "@type": "PlanAction",
     "agent": "did:ethr:0x000Ee5654b9742f6Fe18ea970e32b97ee2247B51",
-    "identifier": "",
+    "identifier": "...",
     "name": "KickStarter for Time",
     "description": "Deliver an app that helps people propose plans, and engages others to bring them to life.",
     "image": "https://live.staticflickr.com/2853/9194403742_c8297b965b_b.jpg",
@@ -85,13 +85,13 @@ Example:
   @type                always the type: "Offer"
   availabilityEnds     optional time when this offer stops being available
   availabilityStarts   optional time when this offer becomes available
-  description          optional free-form explanation; for specific units of time or money, use "itemOffered"
+  description          optional free-form explanation; to offer specific units of time or money, use "itemOffered"
   identifier           optional identifier for this offer
   minOtherOffers       optional number telling how many other offers should be received before this offer is valid
   minOtherOfferAmounts optional total amount of other offers that should be received before this offer is valid
   recipient            optional individual or organization if this is directly to an entity (as opposed to "result")
-  result               optional reference to a PlanAction if this contributes to some other plan or goal (as opposed to "recipient")
-  itemOffered          optional specific quantity; for a general explanation of the offer, use "description"
+  isPartOf             optional reference to a PlanAction if this contributes to some other plan or goal (as opposed to "recipient")
+  includesObject       optional specific TypeAndQuantityNode; to make a free-form explanation of the offer, use "description"
   ==================== ====
 
 
@@ -106,8 +106,8 @@ Example:
     "description": "Regular progress, including time for coding and networking",
     "availabilityStarts": "2022-07",
     "availabilityEnds": "2023-03",
-    "itemOffered": "...",
     "isPartOf": { "@type": "PlanAction", "identifier": "..." }
+    "includesObject": { "@type": "TypeAndQuantityNode", "amountOfThisGood": 2, "unitCode": "HUR" },
   }
 
 Note that "isPartOf" is not an official property of the Offer spec; it's typically a property of CreativeWork. Other similar properties are "result" and "serviceOutput" and "seeks" and "potentialAction"
@@ -148,9 +148,9 @@ In our Endorser app, you can try many of these such as Time or Money Donations, 
 
 **Other References**
 
-- Besides `schema.org <https://schema.org>`_, there are other formal ontologies that are a close fit and may even be useful as shared projects evolve.
+- Besides `schema.org <https://schema.org>`_, there are other formal ontologies that are a close fit and may even be useful as shared projects evolve. (We may also find it useful to create our own.)
 
-  - `Ontology Design Patterns <http://ontologydesignpatterns.org>`_ has `Plan <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Plan>`_. It also has `Goal <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Goal>`_ if we start refining definitions of results.
+  - Ontology Design Patterns has `Plan <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Plan>`_. It also has `Goal <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Goal>`_ if we start refining definitions of results.
 
   - When it comes to conditions for an offer:
 
@@ -158,7 +158,7 @@ In our Endorser app, you can try many of these such as Time or Money Donations, 
 
     - Inria has `GoalCondition <http://ns.inria.fr/ludo/v1/docs/gamemodel.html#GoalCondition>`_.
 
-    - Web Service Modeling Ontology has `a "lite" set <http://www.wsmo.org/ns/wsmo-lite/index.rdfxml>`_ <http://www.wsmo.org/ns/wsmo-lite/index.rdfxml>`_ with a "Condition" type.
+    - Web Service Modeling Ontology has `a "lite" set <http://www.wsmo.org/ns/wsmo-lite/index.rdfxml>`_ with a "Condition" type.
 
     - Dublin Core has `type "Requires" <https://www.dublincore.org/resources/userguide/creating_metadata/#Requires>`_ and `property "requires" <https://www.dublincore.org/resources/userguide/publishing_metadata/#dcterms:requires>`_.
 
@@ -172,4 +172,4 @@ In our Endorser app, you can try many of these such as Time or Money Donations, 
 
   - `Let's B More <https://letsbmore.timebanks.org/>`_ has a search through their offerings.
 
-- There are signing technologies for cash without a central blockchain: `"Untraceable Off-line Cash in Wallets with Observers" by Stefan Brands <courses.csail.mit.edu/6.857/2009/handouts/untraceable.pdf>`_ shows one way... this `"note on blind signature schemes" <https://blog.cryptographyengineering.com/a-note-on-blind-signature-schemes/>`_ has other links but most are broken. I believe there is more recent work as well but it's hard to find.
+- There are signing technologies for cash without a central blockchain: `"Untraceable Off-line Cash in Wallets with Observers" by Stefan Brands <https://courses.csail.mit.edu/6.857/2009/handouts/untraceable.pdf>`_ shows one way... this `"note on blind signature schemes" <https://blog.cryptographyengineering.com/a-note-on-blind-signature-schemes/>`_ has other links but most are broken. I believe there is more recent work as well but it's hard to find.

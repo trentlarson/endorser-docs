@@ -1,6 +1,6 @@
 
-Membership and Pledges
-======================
+Pledges & Membership
+====================
 
 How can we show that someone has authorization, or has shown agreement to conditions?
 

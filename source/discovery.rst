@@ -1,14 +1,14 @@
 
-Project & Skill Discovery
-=========================
+Skills & Interests
+==================
 
 How do we discover others with certain interests or skills?
 
 Here are a few scenarios:
 
-  #. I want to publish a project, problem, or skill for someone to find it.
+  #. I want to publish a skill or interest.
 
-  #. I want to find someone with certain interests or skills.
+  #. I want to find someone with certain skills or interests.
 
 Here are the verbs used for assertions:
 
@@ -16,9 +16,9 @@ Here are the verbs used for assertions:
 
 Hopefully it's clear how to apply those assertions to the scenarios above, available in the app:
 
-  #. Create a `Person <https://schema.org/Person>`_ and include any descriptive words about the project, problem, or skill.
+  #. Create a `Person <https://schema.org/Person>`_ and include any descriptive words about the skills or activities.
 
-  #. Search for any criteria. If you cannot see them directly, then hopefully the skill or project already exists and someone can connect you together. If no DIDs are visible at all in your search results, that means that nobody visible... neither directly nor in your shared network to introduce you to each other.
+  #. Search for any keywords that interest you. If you cannot see them directly, then hopefully someone can connect you together. If no DIDs are visible at all in your search results, that means that nobody is visible... neither directly nor in your shared network to introduce you to each other. You can always reach out to your contacts to see if any of them are in closer proximity; just realize that another intermediary has much less knowledge about you and much less weight when it comes to introductions and/or recommendations.
 
 **Other References**
 

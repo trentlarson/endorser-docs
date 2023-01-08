@@ -85,6 +85,9 @@ Here are some other details about the current system, for the technically-minded
 
 * The next primary enhancement is to store & share claims & IDs directly from personal devices. (The only current option is to share your IDs with a shared server -- which is useful but which is not the end goal.) New encryption and selective disclosure approaches will allow you to share only what you want other people to discover, and provide various levels of access for them to contact you... all controlled by your devices, provably. We intend to migrate to that technology when it is more readily available; for now we offer this service and require the minimal amount of knowledge while still providing value. See :doc:`future` for more details.
 
+Finally, see :doc:`Future, Past, and Related work <future>`.
+
+
 Other Content
 -------------
 
@@ -105,7 +108,3 @@ Other Content
   - There is `a diagram for a simple workflow <https://whimsical.com/liberty-certification-KS6ocCfbFWSPhY4uKFWsTx>`_.
 
   - There are `sample claims <https://endorser.ch/doc-sample-claims>`_ to scan into the mobile app.
-
-
-Finally, see :doc:`Future, Past, and Related work <future>`.
-

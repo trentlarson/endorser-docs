@@ -8,8 +8,8 @@ Endorser Server Documentation
    :caption: Contents:
 
    intro
-   pledge
    witness
+   pledge
    discovery
    transactions
    future
