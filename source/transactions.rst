@@ -18,17 +18,17 @@ Here are a few scenarios:
 
 Here are the verbs used for assertions -- many recorded in the mobile app by default.
 
-  - "Join" shows attendance or membership in a group. Technically: `schema.org "JoinAction" <https://schema.org/JoinAction>`_
+- "Join" shows attendance or membership in a group. Technically: `schema.org "JoinAction" <https://schema.org/JoinAction>`_
 
-  - "Give" shows transfer of ownership. Fungible items like money and time would be included as the 'object'. Technically: `schema.org "GiveAction" <https://schema.org/GiveAction>`_
+- "Give" shows transfer of ownership. Fungible items like money and time would be included as the 'object'. Technically: `schema.org "GiveAction" <https://schema.org/GiveAction>`_
 
-    - "Donate" is an act of giving a gift, typically toward an entity rather than a project (as opposed to a "Grant" for a goal). It is similar to "Give" but used to explicitly record that these is no reciprocation. Technically: `schema.org "DonateAction" <https://schema.org/DonateAction>`_
+  - "Donate" is an act of giving a gift, typically toward an entity rather than a project (as opposed to a "Grant" for a goal). It is similar to "Give" but used to explicitly record that these is no reciprocation. Technically: `schema.org "DonateAction" <https://schema.org/DonateAction>`_
 
-    - "Grant" represents donations toward a goal or project (as opposed to "Donate" to an entity for whatever purpose they choose). (Note that this isn't yet fully accepted at schema.org.) Technically: `schema.org "Grant" <https://schema.org/Grant>`_
+  - "Grant" represents donations toward a goal or project (as opposed to "Donate" to an entity for whatever purpose they choose). (Note that this isn't yet fully accepted at schema.org.) Technically: `schema.org "Grant" <https://schema.org/Grant>`_
 
-  - "Loan Or Credit" represents temporary transfer of money. Technically: `schema.org "LoanOrCredit" <https://schema.org/LoanOrCredit>`_
+- "Loan Or Credit" represents temporary transfer of money. Technically: `schema.org "LoanOrCredit" <https://schema.org/LoanOrCredit>`_
 
-  - "Plan" proposes some activity to be executed; it typically aims at a particular time frame. "Offer" is different because the object in question is specific amounts of money or time; this is useful for advertising and proposing an initiative for others to join. "Project" is different because it targets an outcome; this focuses on a particular activity rather than a goal. Technically: `schema.org "PlanAction" <https://schema.org/PlanAction>`_
+- "Plan" proposes some activity to be executed; it typically aims at a particular time frame. "Offer" is different because the object in question is specific amounts of money or time; this is useful for advertising and proposing an initiative for others to join. "Project" is different because it targets an outcome; this focuses on a particular activity rather than a goal. Technically: `schema.org "PlanAction" <https://schema.org/PlanAction>`_
 
 
 
@@ -61,7 +61,7 @@ Example:
     "agent": "did:ethr:0x000Ee5654b9742f6Fe18ea970e32b97ee2247B51",
     "identifier": "...",
     "name": "KickStarter for Time",
-    "description": "Deliver an app that helps people propose plans, and engages others to bring them to life.",
+    "description": "Deliver an app that...",
     "image": "https://live.staticflickr.com/2853/9194403742_c8297b965b_b.jpg",
     "startTime": "2022-07",
     "endTime": "2023-03"
@@ -70,9 +70,9 @@ Example:
 ..
 
 
-    - "Project" is for a large-scale initiative, typically associated with an organization for some long-term benefit. "Plan is different because it aims at a more specific action at a point in time. Technically: `schema.org "Project" proposal <https://schema.org/Project>`_
+- "Project" is for a large-scale initiative, typically associated with an organization for some long-term benefit. "Plan" is different because it aims at a more specific action at a point in time. Technically: `schema.org "Project" proposal <https://schema.org/Project>`_
 
-    - "Offer" proposes a transfer or service, often with conditions or a price. When the proposal is fulfilled, there is a resulting "Give" or "Donate" or more complicated transfer such as "Trade". Technically: `schema.org "Offer" <https://schema.org/Offer>`_ (The opposite is a `"Demand" <https://schema.org/Demand>`_.)
+- "Offer" proposes a transfer or service, often with conditions or a price. When the proposal is fulfilled, there is a resulting "Give" or "Donate" or more complicated transfer such as "Trade". Technically: `schema.org "Offer" <https://schema.org/Offer>`_ (The opposite is a `"Demand" <https://schema.org/Demand>`_.)
 
 .. table:: Properties of an Offer at Endorser.ch
 
@@ -85,14 +85,30 @@ Example:
   @type                always the type: "Offer"
   availabilityEnds     optional time when this offer stops being available
   availabilityStarts   optional time when this offer becomes available
-  description          optional free-form explanation; to offer specific units of time or money, use "itemOffered"
+  description          optional free-form explanation of conditions
   identifier           optional identifier for this offer
-  minOtherOffers       optional number telling how many other offers should be received before this offer is valid
-  minOtherOfferAmounts optional total amount of other offers that should be received before this offer is valid
-  recipient            optional individual or organization if this is directly to an entity (as opposed to "result")
-  isPartOf             optional reference to a PlanAction if this contributes to some other plan or goal (as opposed to "recipient")
-  includesObject       optional specific TypeAndQuantityNode; to make a free-form explanation of the offer, use "description"
+  includesObject       optional specific "TypeAndQuantityNode"
+  itemOffered          optional description of the donation or service; see "itemOffered" table below
+  minOtherOffers       optional number telling how many other offers should be committed before this offer is valid
+  minOtherOfferAmounts optional total "TypeAndQuantityNode" in other offers that should be committed before this offer is valid
+  recipient            optional individual or organization if this is directly to an entity (as opposed to being part of an activity or project)
   ==================== ====
+
+
+.. table:: Properties of an itemOffered at Endorser.ch
+
+  ==================== ====
+
+  Name                 Description
+
+  ==================== ====
+  @context             the schema "https://schema.org" (which is optional if the enclosing object already has it)
+  @type                the type of this item, eg "CreativeWork" or "Service"
+  description          optional free-form explanation of deliverable or work contribution
+  isPartOf             optional reference to a bigger activity (AKA "`PlanAction <https://schema.org/PlanAction>`_") or "`Project <https://schema.org/Project>`_"
+  ==================== ====
+
+
 
 
 Example:
@@ -103,27 +119,33 @@ Example:
     "@context": "https://schema.org",
     "@type": "Offer",
     "offeredBy": "did:ethr:0x111c4aCD2B13e26137221AC86c2c23730c9A315A",
-    "description": "Regular progress, including time for coding and networking",
     "availabilityStarts": "2022-07",
     "availabilityEnds": "2023-03",
-    "isPartOf": { "@type": "PlanAction", "identifier": "..." }
+    "itemOffered": {
+      "@type": "CreativeWork",
+      "description": "Time for coding on...",
+      "isPartOf": {
+        "@type": "PlanAction",
+        "identifier": "..."
+      }
+    },
     "includesObject": { "@type": "TypeAndQuantityNode", "amountOfThisGood": 2, "unitCode": "HUR" },
+    "minOtherOffers": 3,
+    "minOtherOfferAmounts": { "@type": "TypeAndQuantityNode", "amountOfThisGood": 5, "unitCode": "HUR" }
   }
 
-Note that "isPartOf" is not an official property of the Offer spec; it's typically a property of CreativeWork. Other similar properties are "result" and "serviceOutput" and "seeks" and "potentialAction"
 
 
 
+- "Watch" says that something was seen. Technically: `schema.org "WatchAction" <https://schema.org/WatchAction>`_
 
-  - "Watch" says that something was seen. Technically: `schema.org "WatchAction" <https://schema.org/WatchAction>`_
+- "Agree" says that the user concurs with some other assertion. Technically: `schema.org "AgreeAction" <https://schema.org/AgreeAction>`_
 
-  - "Agree" says that the user concurs with some other assertion. Technically: `schema.org "AgreeAction" <https://schema.org/AgreeAction>`_
+- "Accept" signals that someone accepts some contract or pledge. (This could be used to state alignment to terms for a later transfer. This is different from "Agree" because it signals a commitment, eg. to a policy or proposal. See `schema.org <https://schema.org/>`_ for concrete definitions.) Technically: `schema.org "AcceptAction" <https://schema.org/AcceptAction>`_
 
-  - "Accept" signals that someone accepts some contract or pledge. (This could be used to state alignment to terms for a later transfer. This is different from "Agree" because it signals a commitment, eg. to a policy or proposal. See `schema.org <https://schema.org/>`_ for concrete definitions.) Technically: `schema.org "AcceptAction" <https://schema.org/AcceptAction>`_
+  - There is also a "Take" to show that something has been received or redeemed, which is the opposite of "Give"; however, in these applications, a recipient shows fulfilment of a previous "Give" action with an "AgreeAction" where the 'object' has the originating "Give" action (or 'identifier'). Technically: `schema.org "TakeAction" <https://schema.org/TakeAction>`_.
 
-    - There is also a "Take" to show that something has been received or redeemed, which is the opposite of "Give"; however, in these applications, a recipient shows fulfilment of a previous "Give" action with an "AgreeAction" where the 'object' has the originating "Give" action (or 'identifier'). Technically: `schema.org "TakeAction" <https://schema.org/TakeAction>`_.
-
-    - There is also `"Send" <https://schema.org/SendAction>`_ and `"Receive" <https://schema.org/ReceiveAction>`_ to signify that an 'object' has been transported, but they don't indicate any transfer of ownership (and are not used in these applications).
+  - There is also `"Send" <https://schema.org/SendAction>`_ and `"Receive" <https://schema.org/ReceiveAction>`_ to signify that an 'object' has been transported, but they don't indicate any transfer of ownership (and are not used in these applications).
 
 Hopefully it's clear how to apply those assertions to the scenarios above:
 
@@ -162,7 +184,7 @@ In our Endorser app, you can try many of these such as Time or Money Donations, 
 
     - Dublin Core has `type "Requires" <https://www.dublincore.org/resources/userguide/creating_metadata/#Requires>`_ and `property "requires" <https://www.dublincore.org/resources/userguide/publishing_metadata/#dcterms:requires>`_.
 
-  - FOAF has a `Project <http://xmlns.com/foaf/0.1/#term_Project>`_.
+  - There's a `FOAF Project <http://xmlns.com/foaf/0.1/#term_Project>`_.
 
   - `Linked Online Vocabularies <https://lov.linkeddata.es>`_ allow searching through many ontologies.
 
