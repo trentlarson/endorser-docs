@@ -124,10 +124,7 @@ Example:
     "itemOffered": {
       "@type": "CreativeWork",
       "description": "Time for coding on...",
-      "isPartOf": {
-        "@type": "PlanAction",
-        "identifier": "..."
-      }
+      "isPartOf": { "@type": "PlanAction", "identifier": "..." }
     },
     "includesObject": { "@type": "TypeAndQuantityNode", "amountOfThisGood": 2, "unitCode": "HUR" },
     "minOtherOffers": 3,
