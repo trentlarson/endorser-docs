@@ -58,7 +58,7 @@ Example:
   {
     "@context": "https://schema.org",
     "@type": "PlanAction",
-    "agent": "did:ethr:0x000Ee5654b9742f6Fe18ea970e32b97ee2247B51",
+    "agent": { "identifier": "did:..." },
     "identifier": "...",
     "name": "KickStarter for Time",
     "description": "Deliver an app that...",
@@ -121,12 +121,12 @@ Example:
     "offeredBy": "did:ethr:0x111c4aCD2B13e26137221AC86c2c23730c9A315A",
     "availabilityStarts": "2022-07",
     "availabilityEnds": "2023-03",
+    "includesObject": { "@type": "TypeAndQuantityNode", "amountOfThisGood": 2, "unitCode": "HUR" },
     "itemOffered": {
       "@type": "CreativeWork",
       "description": "Time for coding on...",
       "isPartOf": { "@type": "PlanAction", "identifier": "..." }
     },
-    "includesObject": { "@type": "TypeAndQuantityNode", "amountOfThisGood": 2, "unitCode": "HUR" },
     "minOtherOffers": 3,
     "minOtherOfferAmounts": { "@type": "TypeAndQuantityNode", "amountOfThisGood": 5, "unitCode": "HUR" }
   }

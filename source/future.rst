@@ -103,3 +103,15 @@ Selected History
 ----------------
 
 - Always appreciate how far we've come. :-) For example, this used to be `based on uPort <https://github.com/trentlarson/uport-demo/blob/5c3d7fcb751ad34ed10ebb7adab650b2cfebb7d1/src/components/Welcome.js#L96>`_. The `first shared transaction was on Jan 2019 <https://endorser.ch/reportClaim?claimId=01D25AVGQG1N8E9JNGK7C7DZRD>`_ (before the Verifiable Credentials Working Draft was submitted).
+
+- There have been some changes to the standard schema. The server allows anything to be sent so these mostly affect the client, where very old claims may have slightly different format on retrieval.
+
+  - 'ConfirmAction' was used; this changed to 'AgreeAction'.
+
+  - 'agent', 'participant', and 'party' properties contained 'did'; the 'identifier' now contains the DID.
+
+  - On 'Offer'
+
+    - It contained 'itemOffered' with a 'TypeAndQuantityNode'; quantities moved to 'includesObject', and 'itemOffered' changed to include the 'CreativeWork' and description of the offering.
+
+    - 'description' was used at the top level for the description of the work and 'termsOfService' was used for terms; 'description' changed to contain the terms, and 'itemOffered.description' was added to contain the description of the work changed.
