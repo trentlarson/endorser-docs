@@ -106,12 +106,12 @@ Selected History
 
 - There have been some changes to the standard schema. The server allows anything to be sent so these mostly affect the client, where very old claims may have slightly different format on retrieval.
 
-  - 'ConfirmAction' was used; this changed to 'AgreeAction'.
+  - Agreements are done with 'AgreeAction'. 'Confirmation' was used until 2020-06-15.
 
-  - 'agent', 'participant', and 'party' properties contained 'did'; the 'identifier' now contains the DID.
+  - Person obects (used in 'agent', 'participant', and 'party') contain an 'identifier' property with a DID value. They used to contain a 'did' property with that value, until...
 
-  - On 'Offer'
+  - On 'Offer':
 
-    - It contained 'itemOffered' with a 'TypeAndQuantityNode'; quantities moved to 'includesObject', and 'itemOffered' changed to include the 'CreativeWork' and description of the offering.
+    - Quantities are found in 'includesObject' with a 'TypeAndQuantityNode' object, and the 'CreativeWork' and description of the offering are in 'itemOffered'. Quantities were found in 'itemOffered' until...
 
-    - 'description' was used at the top level for the description of the work and 'termsOfService' was used for terms; 'description' changed to contain the terms, and 'itemOffered.description' was added to contain the description of the work changed.
+    - 'description' contains the terms, and 'itemOffered.description' contains the description of the work changed. 'description' was used at the top level for the description of the work and 'termsOfService' was used for terms until...
