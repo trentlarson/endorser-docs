@@ -12,4 +12,5 @@ Endorser Server Documentation
    pledge
    discovery
    transactions
+   server
    future

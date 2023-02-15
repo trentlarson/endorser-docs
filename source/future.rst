@@ -108,10 +108,12 @@ Selected History
 
   - Agreements are done with 'AgreeAction'. 'Confirmation' was used until 2020-06-15.
 
-  - Person obects (used in 'agent', 'participant', and 'party') contain an 'identifier' property with a DID value. They used to contain a 'did' property with that value, until...
+  - Person objects (used in 'agent', 'participant', and 'party' properties) contain an 'identifier' property with a DID value. They used to contain a 'did' property with that value (until... time yet unknown).
 
-  - On 'Offer':
+  - On Offer objects:
 
-    - Quantities are found in 'includesObject' with a 'TypeAndQuantityNode' object, and the 'CreativeWork' and description of the offering are in 'itemOffered'. Quantities were found in 'itemOffered' until...
+    - Specific quantities are found in 'includesObject' with a 'TypeAndQuantityNode' object, and the 'CreativeWork' and description of the offering are in 'itemOffered'. Quantities were found in 'itemOffered' (until... time yet unknown).
 
-    - 'description' contains the terms, and 'itemOffered.description' contains the description of the work changed. 'description' was used at the top level for the description of the work and 'termsOfService' was used for terms until...
+    - The description of the work is in 'itemOffered.description'. This used to be in 'termsOfService' (until... time yet unknown).
+
+    - Terms of the offer are found in 'description'. It used to be in 'termsOfService' (until... time yet unknown).
