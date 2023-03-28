@@ -38,12 +38,11 @@ Here are the verbs used for assertions -- many recorded in the mobile app by def
   @context             always the schema: "https://schema.org"
   @type                always the type: "GiveAction"
   fulfills             optional relationship with other Offer or Plan; see "fulfills" table below (This is not currently part of schema.org specs.)
-  identifier           optional identifier for this offer
-  includesObject       optional "TypeAndQuantityNode" (This is not currently part of schema.org specs.)
+  identifier           optional identifier for this action, which should be a full URL
   object               optional description of the donation or service; see "object" table below
-  description          optional free-form explanation of conditions
-  agent                optional individual or org who gave; defaults to issuer
-  recipient            optional individual or organization if this is directly to an entity (as opposed to being part of an activity or project)
+  description          optional free-form description of what is given
+  agent                optional individual or org who gave (giver defaults to issuer)
+  recipient            optional individual or organization if this is directly to an entity (as opposed to being part of an activity or project, which belong in "fulfills")
   ==================== ====
 
 
@@ -73,8 +72,8 @@ Here are the verbs used for assertions -- many recorded in the mobile app by def
 
   ==================== ====
   @context             the schema (which is optional if the enclosing object already has it)
-  @type                recommended: type of this item, eg "Offer" or "PlanAction"
-  identifier           required reference to a previous claim
+  @type                recommended: type of the item being fulfilled, eg "Offer" or "PlanAction"
+  identifier           required reference to a previous claim, which should be a full URL
   ==================== ====
 
 
@@ -99,7 +98,7 @@ Here are the verbs used for assertions -- many recorded in the mobile app by def
   agent        optional DID of the proposing person or organization
   description  optional free-form explanation
   endTime      optional date when the planned activity will end
-  identifier   optional identifier for this plan
+  identifier   optional identifier for this plan, which should be a full URL
   image        optional image URL
   name         optional short name
   startTime    optional date when the planned activity will start
@@ -141,7 +140,7 @@ Example:
   availabilityEnds               optional time when this offer stops being available
   availabilityStarts             optional time when this offer becomes available
   description                    optional free-form explanation of conditions
-  identifier                     optional identifier for this offer
+  identifier                     optional identifier for this offer, which should be a full URL
   includesObject                 optional specific "TypeAndQuantityNode"; see "includesObject" table above
   itemOffered                    optional description of the donation or service; see "itemOffered" table below
   offeredBy                      optional (but recommended) individual or org doing the offer, who creates the claim
