@@ -14,3 +14,4 @@ Endorser Server Documentation
    transactions
    server
    future
+   meta

@@ -26,6 +26,60 @@ Here are the verbs used for assertions -- many recorded in the mobile app by def
 
   - "Grant" represents donations toward a goal or project (as opposed to "Donate" to an entity for whatever purpose they choose). (Note that this isn't yet fully accepted at schema.org.) Technically: `schema.org "Grant" <https://schema.org/Grant>`_
 
+- "Offer" proposes a transfer or service, often with conditions or a price. When the proposal is fulfilled, there is a resulting "Give" or "Donate" or more complicated transfer such as "Trade". Technically: `schema.org "Offer" <https://schema.org/Offer>`_ (The opposite is a `"Demand" <https://schema.org/Demand>`_.)
+
+.. table:: Properties of a Give at Endorser.ch
+
+  ==================== ====
+
+  Name                 Description
+
+  ==================== ====
+  @context             always the schema: "https://schema.org"
+  @type                always the type: "GiveAction"
+  fulfills             optional relationship with other Offer or Plan; see "fulfills" table below (This is not currently part of schema.org specs.)
+  identifier           optional identifier for this offer
+  includesObject       optional "TypeAndQuantityNode" (This is not currently part of schema.org specs.)
+  object               optional description of the donation or service; see "object" table below
+  description          optional free-form explanation of conditions
+  agent                optional individual or org who gave; defaults to issuer
+  recipient            optional individual or organization if this is directly to an entity (as opposed to being part of an activity or project)
+  ==================== ====
+
+
+
+
+.. table:: Properties of a Give "object" or Offer "includesObject" at Endorser.ch
+
+  ==================== ====
+
+  Name                 Description
+
+  ==================== ====
+  @context             the schema "https://schema.org" (which is optional if the enclosing object already has it)
+  @type                the type of this item, eg "TypeAndQuantityNode"
+  amountOfThisGood     required numeric amount
+  unitCode             required unit of amount, eg "HUR" for hour, "USD" for US Dollar, "BTC" for Bitcoin. `As specified <https://schema.org/unitCode>`_, this follows `UN/CEFACT codes <https://unece.org/trade/uncefact>`_, particularly `for time (Recommendation No. 20 - Revision 17 (Annexes I to III)) <https://unece.org/sites/default/files/2021-06/rec20_Rev17e-2021.xlsx>`_ and `for currency (ISO-4217) <https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xls>`_.
+  ==================== ====
+
+
+
+
+.. table:: Properties of a Give "fullfills" at Endorser.ch
+
+  ==================== ====
+
+  Name                 Description
+
+  ==================== ====
+  @context             the schema (which is optional if the enclosing object already has it)
+  @type                recommended: type of this item, eg "Offer" or "PlanAction"
+  identifier           required reference to a previous claim
+  ==================== ====
+
+
+
+
 - "Loan Or Credit" represents temporary transfer of money. Technically: `schema.org "LoanOrCredit" <https://schema.org/LoanOrCredit>`_
 
 - "Plan" proposes some activity to be executed; it typically aims at a particular time frame. "Offer" is different because the object in question is specific amounts of money or time; this is useful for advertising and proposing an initiative for others to join. "Project" is different because it targets an outcome; this focuses on a particular activity rather than a goal. Technically: `schema.org "PlanAction" <https://schema.org/PlanAction>`_
@@ -76,36 +130,50 @@ Example:
 
 .. table:: Properties of an Offer at Endorser.ch
 
+  ============================== ====
+
+  Name                           Description
+
+  ============================== ====
+  @context                       always the schema: "https://schema.org"
+  @type                          always the type: "Offer"
+  actionAccessibilityRequirement optional declaration of conditions for this offer; see "ActionAccessSpecification" table below (This is not currently part of schema.org specs on Offer.)
+  availabilityEnds               optional time when this offer stops being available
+  availabilityStarts             optional time when this offer becomes available
+  description                    optional free-form explanation of conditions
+  identifier                     optional identifier for this offer
+  includesObject                 optional specific "TypeAndQuantityNode"; see "includesObject" table above
+  itemOffered                    optional description of the donation or service; see "itemOffered" table below
+  offeredBy                      optional (but recommended) individual or org doing the offer, who creates the claim
+  recipient                      optional individual or organization if this is directly to an entity (as opposed to being part of an activity or project)
+  ============================== ====
+
+
+.. table:: Properties of an Offer "itemOffered" at Endorser.ch
+
   ==================== ====
 
   Name                 Description
 
   ==================== ====
-  @context             always the schema: "https://schema.org"
-  @type                always the type: "Offer"
-  availabilityEnds     optional time when this offer stops being available
-  availabilityStarts   optional time when this offer becomes available
-  description          optional free-form explanation of conditions
-  identifier           optional identifier for this offer
-  includesObject       optional specific "TypeAndQuantityNode"
-  itemOffered          optional description of the donation or service; see "itemOffered" table below
-  minOtherOffers       optional number telling how many other offers should be committed before this offer is valid
-  minOtherOfferAmounts optional total "TypeAndQuantityNode" in other offers that should be committed before this offer is valid
-  recipient            optional individual or organization if this is directly to an entity (as opposed to being part of an activity or project)
-  ==================== ====
-
-
-.. table:: Properties of an itemOffered at Endorser.ch
-
-  ==================== ====
-
-  Name                 Description
-
-  ==================== ====
-  @context             the schema "https://schema.org" (which is optional if the enclosing object already has it)
-  @type                the type of this item, eg "CreativeWork" or "Service"
+  @context             optional schema "https://schema.org" (which is assumed if the enclosing object already has it)
+  @type                optional type of this item, eg "CreativeWork" or "Service" (but recommended to plan future expansion)
   description          optional free-form explanation of deliverable or work contribution
-  isPartOf             optional reference to a bigger activity (AKA "`PlanAction <https://schema.org/PlanAction>`_") or "`Project <https://schema.org/Project>`_"
+  isPartOf             optional reference to a bigger activity (AKA "`PlanAction <https://schema.org/PlanAction>`_") or "`Project <https://schema.org/Project>`_" (This is not currently part of schema.org specs on all "itemOffered" objects.)
+  ==================== ====
+
+
+.. table:: Properties of an Offer "actionAccessibilityRequirement" property at Endorser.ch
+
+  ==================== ====
+
+  Name                 Description
+
+  ==================== ====
+  @context             optional schema "https://schema.org" (which is assumed if the enclosing object already has it)
+  @type                optional type of this item (which is assumed to be "ActionAccessSpecification")
+  requiresOffers       optional number telling how many other offers should be committed before this offer is valid (This is not currently part of schema.org specs.)
+  requiresOffersTotal  optional total "TypeAndQuantityNode" in other offers that should be committed before this offer is valid (This is not currently part of schema.org specs.)
   ==================== ====
 
 
@@ -121,24 +189,25 @@ Example:
     "offeredBy": "did:ethr:0x111c4aCD2B13e26137221AC86c2c23730c9A315A",
     "availabilityStarts": "2022-07",
     "availabilityEnds": "2023-03",
-    "includesObject": { "@type": "TypeAndQuantityNode", "amountOfThisGood": 2, "unitCode": "HUR" },
+    "includesObject": { "amountOfThisGood": 2, "unitCode": "HUR" },
     "itemOffered": {
       "@type": "CreativeWork",
       "description": "Time for coding on...",
       "isPartOf": { "@type": "PlanAction", "identifier": "..." }
     },
-    "minOtherOffers": 3,
-    "minOtherOfferAmounts": { "@type": "TypeAndQuantityNode", "amountOfThisGood": 5, "unitCode": "HUR" }
+    "actionAccessibilityRequirement": {
+      "requiresOffers": 3,
+      "requiresOffersTotal": { "amountOfThisGood": 5, "unitCode": "HUR" }
+    }
   }
 
 
+Note that the "includesObject" and "requiresOffersTotal" don't include an "@type" of "TypeAndQuantityNode" because that is what our software will consider the default.
 
-
-- "Watch" says that something was seen. Technically: `schema.org "WatchAction" <https://schema.org/WatchAction>`_
 
 - "Agree" says that the user concurs with some other assertion. Technically: `schema.org "AgreeAction" <https://schema.org/AgreeAction>`_
 
-- "Accept" signals that someone accepts some contract or pledge. (This could be used to state alignment to terms for a later transfer. This is different from "Agree" because it signals a commitment, eg. to a policy or proposal. See `schema.org <https://schema.org/>`_ for concrete definitions.) Technically: `schema.org "AcceptAction" <https://schema.org/AcceptAction>`_
+- "Accept" signals that someone accepts some contract or pledge. (This could be used to state alignment to terms for a later transfer. This is different from "Agree" because it signals a commitment, eg. to a policy or proposal.) Technically: `schema.org "AcceptAction" <https://schema.org/AcceptAction>`_
 
   - There is also a "Take" to show that something has been received or redeemed, which is the opposite of "Give"; however, in these applications, a recipient shows fulfilment of a previous "Give" action with an "AgreeAction" where the 'object' has the originating "Give" action (or 'identifier'). Technically: `schema.org "TakeAction" <https://schema.org/TakeAction>`_.
 
@@ -160,7 +229,7 @@ Hopefully it's clear how to apply those assertions to the scenarios above:
 
   #. `"Agree" <https://schema.org/AgreeAction>`_ to confirm delivery of a "GiveAction" which is included as the 'object'. This is how recipients signal they've received whatever was given or donated.
 
-In our Endorser app, you can try many of these such as Time or Money Donations, or Credit.
+In our Endorser app, you can try many of these such as Time or Money Donations.
 
 
 
@@ -169,9 +238,9 @@ In our Endorser app, you can try many of these such as Time or Money Donations, 
 
 - Besides `schema.org <https://schema.org>`_, there are other formal ontologies that are a close fit and may even be useful as shared projects evolve. (We may also find it useful to create our own.)
 
-  - Ontology Design Patterns has `Plan <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Plan>`_. It also has `Goal <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Goal>`_ if we start refining definitions of results.
+  - When it comes to conditions for an Offer, we chose to add `"actionAccessibilityRequirement" <https://schema.org/actionAccessibilityRequirement>`_ with new properties "requiresOffers" & "requiresOffersTotal". There were other options:
 
-  - When it comes to conditions for an offer:
+    - Schema.org has properties like `expectsAcceptanceOf <https://schema.org/expectsAcceptanceOf>`_ and `"freeShippingThreshold" <https://schema.org/freeShippingThreshold>`_ (but "requires" is more apropos than those), and `"eligibleQuantity" <https://schema.org/eligibleQuantity>`_ (though that is geared toward quantities of this offering and not quantities outside this offering).
 
     - Data Quality Constraint Library (with this `helpful graphic <http://semwebquality.org/dqm-vocabulary/v1/UML_DQM-Vocabulary.png>`_) has `hasCondition <http://semwebquality.org/dqm-vocabulary/v1/dqm#hasCondition>`_ that could be for Offer prerequisites.
 
@@ -181,9 +250,33 @@ In our Endorser app, you can try many of these such as Time or Money Donations, 
 
     - Dublin Core has `type "Requires" <https://www.dublincore.org/resources/userguide/creating_metadata/#Requires>`_ and `property "requires" <https://www.dublincore.org/resources/userguide/publishing_metadata/#dcterms:requires>`_.
 
-  - There's a `FOAF Project <http://xmlns.com/foaf/0.1/#term_Project>`_.
+  - For delivery of an offer, besides Schema.org's "GiveAction", there are the following:
+
+    - For reference to the object being given, Thing objects have a "potentialAction" property (but that wouldn't be used to reference the GiveAction because the Offer is not the object; rather, the time or money is the object).
+
+    - For the reference back to the Offer, there are "referencesOrder" and "partOfInvoice" (but those are specific to a listing on an invoice to a customer).
+
+  - For Project schemas, there are some other choices beyond Schema.org's "PlanAction" (and the upcoming "Project") and we anticipate getting more specific over time and using one of these. For now, we're focused on getting the mechanics of Offer & Give correct, but there are these when we expand:
+
+    - `The EP-PLAN ontology <https://trustlens.github.io/EP-PLAN/>`_ includes a "Plan" as well.
+
+    - Ontology Design Patterns has concepts in their DUL section for `Plan <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Plan>`_ and `Goal <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Goal>`_, and in their CP section for `"basicplanexecution.owl" <http://www.ontologydesignpatterns.org/cp/owl/basicplanexecution.owl>`_ among `other definittions <http://www.ontologydesignpatterns.org/cp/owl/>`_.
+
+    - There's a `FOAF Project <http://xmlns.com/foaf/0.1/#term_Project>`_.
 
   - `Linked Online Vocabularies <https://lov.linkeddata.es>`_ allow searching through many ontologies.
+
+- Units for currencies are described in multiple places at schema.org:
+
+  - https://schema.org/currency
+
+  - https://schema.org/priceCurrency
+
+  - https://schema.org/price
+
+  We've chosen HUR from UN/CEFACT for the length of time.
+  Time units can be a single string in ISO 8601 format for schema.org but we don't use that (yet).
+
 
 - Some have tackled these problems with tokens; that's a valid approach as well, with upsides of broader markets but downsides of complicated issuance and less private data.
 
