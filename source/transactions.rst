@@ -26,8 +26,6 @@ Here are the verbs used for assertions -- many recorded in the mobile app by def
 
   - "Grant" represents donations toward a goal or project (as opposed to "Donate" to an entity for whatever purpose they choose). (Note that this isn't yet fully accepted at schema.org.) Technically: `schema.org "Grant" <https://schema.org/Grant>`_
 
-- "Offer" proposes a transfer or service, often with conditions or a price. When the proposal is fulfilled, there is a resulting "Give" or "Donate" or more complicated transfer such as "Trade". Technically: `schema.org "Offer" <https://schema.org/Offer>`_ (The opposite is a `"Demand" <https://schema.org/Demand>`_.)
-
 .. table:: Properties of a Give at Endorser.ch
 
   ==================== ====
@@ -77,6 +75,26 @@ Here are the verbs used for assertions -- many recorded in the mobile app by def
   ==================== ====
 
 
+Example:
+
+.. code:: json
+
+  {
+    "@context": "https://schema.org",
+    "@type": "GiveAction",
+    "description": "Made desserts for talent show -- thanks!",
+    "object": {
+      "@type": "TypeAndQuantityNode",
+      "amountOfThisGood": 1,
+      "unitCode": "HUR"
+    },
+    "fulfills": {
+      "@type": "Offer",
+      "identifier": "https://endorser.ch/entity/ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    }
+  }
+
+..
 
 
 - "Loan Or Credit" represents temporary transfer of money. Technically: `schema.org "LoanOrCredit" <https://schema.org/LoanOrCredit>`_
