@@ -1,8 +1,8 @@
 
-Transactions & Projects
-=========================
+Gifts & Projects
+================
 
-How do we represent resource commitments, and then check delivery on those promises?
+How do we represent donations, or resource commitments and subsequently their delivery?
 
 Here are a few scenarios:
 
@@ -20,7 +20,7 @@ Here are the verbs used for assertions -- many recorded in the mobile app by def
 
 - "Join" shows attendance or membership in a group. Technically: `schema.org "JoinAction" <https://schema.org/JoinAction>`_
 
-- "Give" shows transfer of ownership. Fungible items like money and time would be included as the 'object'. Technically: `schema.org "GiveAction" <https://schema.org/GiveAction>`_
+- "Give" shows transfer of ownership. Fungible items like money and time would be included as the 'object'. Note that a Give can be part of a Trade, but if there is no link to a Trade or a reciprocal action then it is assumed to be one-sided (at least, in our system). Technically: `schema.org "GiveAction" <https://schema.org/GiveAction>`_
 
   - "Donate" is an act of giving a gift, typically toward an entity rather than a project (as opposed to a "Grant" for a goal). It is similar to "Give" but used to explicitly record that these is no reciprocation. Technically: `schema.org "DonateAction" <https://schema.org/DonateAction>`_
 
@@ -35,11 +35,12 @@ Here are the verbs used for assertions -- many recorded in the mobile app by def
   ==================== ====
   @context             always the schema: "https://schema.org"
   @type                always the type: "GiveAction"
-  fulfills             optional relationship with other Offer or Plan; see "fulfills" table below (This is not currently part of schema.org specs.)
+  fulfills             optional relationship with other Donation or Offer or Plan or Trade; see "fulfills" table below (This is not currently part of schema.org specs.)
   identifier           optional identifier for this action, which should be a full URL
   object               optional description of the donation or service; see "object" table below
   description          optional free-form description of what is given
   agent                optional individual or org who gave (giver defaults to issuer)
+  provider             optional [{ "@type", "identifier" }] array of Give, Person, or Organization records who helped make this possible
   recipient            optional individual or organization if this is directly to an entity (as opposed to being part of an activity or project, which belong in "fulfills")
   ==================== ====
 
@@ -70,7 +71,7 @@ Here are the verbs used for assertions -- many recorded in the mobile app by def
 
   ==================== ====
   @context             the schema (which is optional if the enclosing object already has it)
-  @type                recommended: type of the item being fulfilled, eg "Offer" or "PlanAction"
+  @type                recommended: type of the item being fulfilled, eg "DonateAction" or "Offer" or "PlanAction" or "TradeAction" -- and it may in turn have an "isPartOf" or "itemOffered.isPartOf" for a broader initiative
   identifier           required reference to a previous claim, which should be a full URL
   ==================== ====
 
@@ -222,17 +223,19 @@ Example:
 Note that the "includesObject" and "requiresOffersTotal" don't include an "@type" of "TypeAndQuantityNode" because that is what our software will consider the default.
 
 
-- "Agree" says that the user concurs with some other assertion. Technically: `schema.org "AgreeAction" <https://schema.org/AgreeAction>`_
-
 - "Accept" signals that someone accepts some contract or pledge. (This could be used to state alignment to terms for a later transfer. This is different from "Agree" because it signals a commitment, eg. to a policy or proposal.) Technically: `schema.org "AcceptAction" <https://schema.org/AcceptAction>`_
 
   - There is also a "Take" to show that something has been received or redeemed, which is the opposite of "Give"; however, in these applications, a recipient shows fulfilment of a previous "Give" action with an "AgreeAction" where the 'object' has the originating "Give" action (or 'identifier'). Technically: `schema.org "TakeAction" <https://schema.org/TakeAction>`_.
 
   - There is also `"Send" <https://schema.org/SendAction>`_ and `"Receive" <https://schema.org/ReceiveAction>`_ to signify that an 'object' has been transported, but they don't indicate any transfer of ownership (and are not used in these applications).
 
-Hopefully it's clear how to apply those assertions to the scenarios above:
+- "Trade" is an exchange action. Technically: `schema.org "TradeAction" <https://schema.org/TradeAction>`_
 
-  #. `"Give" <https://schema.org/GiveAction>`_ an 'object' to a 'recipient', or `"Offer" <https://schema.org/Offer>`_ an 'itemOffered'... time or money or even a `"Service" <https://schema.org/Service>`_.
+- "Agree" shows that the user concurs with some other assertion. This is the preferred way for any counterparties to confirm that someone's claim is true. Technically: `schema.org "AgreeAction" <https://schema.org/AgreeAction>`_
+
+Hopefully it's clear how to apply those assertions to the numbered scenarios above:
+
+  #. `"Give" <https://schema.org/GiveAction>`_ an 'object' to a 'recipient', obviously without fulfilling a "TradeAction" or any other reciprocal requirements. For promises, `"Offer" <https://schema.org/Offer>`_ an 'itemOffered'... time or money or even a `"Service" <https://schema.org/Service>`_.
 
       - One could also `"Grant" <https://schema.org/Grant>`_, though that is new to the schema.
 

@@ -4,6 +4,8 @@ Server Overview
 
 The server holds a log of signed claims. That is it's main purpose; other functions are for convenience or for features that are temporary while full P2P features are implemented.
 
+This service is not good for totally private claims. (Try Mastodon or Nostr or ACDCs.)
+
 * Use `/api/claim <https://test.endorser.ch:8000/api-docs/#/claim>`_ endpoints to record and retrieve claims, via standard REST.
 
   * To `POST <https://test.endorser.ch:8000/api-docs/#/claim/post_api_claim>`_ a claim, it must be signed and sent in a JWT; the body looks like this: ``{ "jwtEncoded" : "{JWT}" }``
