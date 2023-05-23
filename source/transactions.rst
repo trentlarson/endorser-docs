@@ -20,7 +20,7 @@ Here are the verbs used for assertions -- many recorded in the mobile app by def
 
 - "Join" shows attendance or membership in a group. Technically: `schema.org "JoinAction" <https://schema.org/JoinAction>`_
 
-- "Give" shows transfer of ownership. Fungible items like money and time would be included as the 'object'. Note that a Give can be part of a Trade, but if there is no link to a Trade or a reciprocal action then it is assumed to be one-sided (at least, in our system). Technically: `schema.org "GiveAction" <https://schema.org/GiveAction>`_
+- "Give" shows transfer of ownership. Items like money and time would be included as the 'object'. Note that a Give can be part of a Trade, but if there is no link to a Trade or a reciprocal action then it is assumed to be one-sided (at least, in our system). Technically: `schema.org "GiveAction" <https://schema.org/GiveAction>`_
 
   - "Donate" is an act of giving a gift, typically toward an entity rather than a project (as opposed to a "Grant" for a goal). It is similar to "Give" but used to explicitly record that these is no reciprocation. Technically: `schema.org "DonateAction" <https://schema.org/DonateAction>`_
 
