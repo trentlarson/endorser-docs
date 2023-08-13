@@ -258,6 +258,16 @@ In our Endorser app, you can try many of these such as Time or Money Donations.
 
 - Besides `schema.org <https://schema.org>`_, there are other formal ontologies that are a close fit and may even be useful as shared projects evolve. (We may also find it useful to create our own.)
 
+  - For Project schemas, there are some other choices beyond Schema.org's "PlanAction" (and the upcoming "Project") and we anticipate getting more specific over time and using one of these. For now, we're focused on getting the mechanics of Offer & Give correct, but there are these when we expand:
+
+    - The `Valueflows ontology <https://www.valueflo.ws/specification/uml/>`_ has many of the same concepts and is written specifically for "next economy" value networks.
+
+    - `The EP-PLAN ontology <https://trustlens.github.io/EP-PLAN/>`_ includes a "Plan" as well.
+
+    - Ontology Design Patterns has concepts in their DUL section for `Plan <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Plan>`_ and `Goal <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Goal>`_, and in their CP section for `"basicplanexecution.owl" <http://www.ontologydesignpatterns.org/cp/owl/basicplanexecution.owl>`_ among `other definittions <http://www.ontologydesignpatterns.org/cp/owl/>`_.
+
+    - There's a `FOAF Project <http://xmlns.com/foaf/0.1/#term_Project>`_.
+
   - When it comes to conditions for an Offer, we chose to add `"actionAccessibilityRequirement" <https://schema.org/actionAccessibilityRequirement>`_ with new properties "requiresOffers" & "requiresOffersTotal". There were other options:
 
     - Schema.org has properties like `expectsAcceptanceOf <https://schema.org/expectsAcceptanceOf>`_ and `"freeShippingThreshold" <https://schema.org/freeShippingThreshold>`_ (but "requires" is more apropos than those), and `"eligibleQuantity" <https://schema.org/eligibleQuantity>`_ (though that is geared toward quantities of this offering and not quantities outside this offering).
@@ -275,14 +285,6 @@ In our Endorser app, you can try many of these such as Time or Money Donations.
     - For reference to the object being given, Thing objects have a "potentialAction" property (but that wouldn't be used to reference the GiveAction because the Offer is not the object; rather, the time or money is the object).
 
     - For the reference back to the Offer, there are "referencesOrder" and "partOfInvoice" (but those are specific to a listing on an invoice to a customer).
-
-  - For Project schemas, there are some other choices beyond Schema.org's "PlanAction" (and the upcoming "Project") and we anticipate getting more specific over time and using one of these. For now, we're focused on getting the mechanics of Offer & Give correct, but there are these when we expand:
-
-    - `The EP-PLAN ontology <https://trustlens.github.io/EP-PLAN/>`_ includes a "Plan" as well.
-
-    - Ontology Design Patterns has concepts in their DUL section for `Plan <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Plan>`_ and `Goal <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Goal>`_, and in their CP section for `"basicplanexecution.owl" <http://www.ontologydesignpatterns.org/cp/owl/basicplanexecution.owl>`_ among `other definittions <http://www.ontologydesignpatterns.org/cp/owl/>`_.
-
-    - There's a `FOAF Project <http://xmlns.com/foaf/0.1/#term_Project>`_.
 
   - `Linked Online Vocabularies <https://lov.linkeddata.es>`_ allow searching through many ontologies.
 
