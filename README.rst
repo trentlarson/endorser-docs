@@ -1,7 +1,13 @@
 Endorser Docs
 =============
 
-Set up tooling: `pip install -U sphinx && python -m venv .venv`
+Install tooling:
+
+* `pkgx +pip.pypa.io sh`
+
+* `pip install -U sphinx && python -m venv .venv`
+
+Setup: `pkgx +pip.pypa.io sh`
 
 Build: `make html`
 

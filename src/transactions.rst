@@ -18,13 +18,11 @@ Here are a few scenarios:
 
 Here are the verbs used for assertions -- many recorded in the mobile app by default.
 
+A diagram with relationships between these objects is `here <./_static/entity-relationships.pdf>`_.
+
 - "Join" shows attendance or membership in a group. Technically: `schema.org "JoinAction" <https://schema.org/JoinAction>`_
 
 - "Give" shows transfer of ownership. Items like money and time would be included as the 'object'. Note that a Give can be part of a Trade, but if there is no link to a Trade or a reciprocal action then it is assumed to be one-sided (at least, in our system). Technically: `schema.org "GiveAction" <https://schema.org/GiveAction>`_
-
-  - "Donate" is an act of giving a gift, typically toward an entity rather than a project (as opposed to a "Grant" for a goal). It is similar to "Give" but used to explicitly record that these is no reciprocation. Technically: `schema.org "DonateAction" <https://schema.org/DonateAction>`_
-
-  - "Grant" represents donations toward a goal or project (as opposed to "Donate" to an entity for whatever purpose they choose). (Note that this isn't yet fully accepted at schema.org.) Technically: `schema.org "Grant" <https://schema.org/Grant>`_
 
 .. table:: Properties of a Give at Endorser.ch
 
@@ -35,13 +33,13 @@ Here are the verbs used for assertions -- many recorded in the mobile app by def
   ==================== ====
   @context             always the schema: "https://schema.org"
   @type                always the type: "GiveAction"
-  fulfills             optional relationship with other Donation or Offer or Plan or Trade; see "fulfills" table below (This is not currently part of schema.org specs.)
-  identifier           optional identifier for this action, which should be a full URL
-  object               optional description of the donation or service; see "object" table below
+  fulfills             optional Offer or DonateAction or GiveAction or TradeAction or PlanAction or array of them; see "fulfills" table below (This is not currently part of schema.org specs.)
+  identifier           optional identifier for this action, which should be a full URI
+  object               optional item or service or array of them; see Give "object" table below
   description          optional free-form description of what is given
-  agent                optional individual or org who gave (giver defaults to issuer)
-  provider             optional [{ "@type", "identifier" }] array of Give, Person, or Organization records who helped make this possible
-  recipient            optional individual or organization if this is directly to an entity (as opposed to being part of an activity or project, which belong in "fulfills")
+  agent                optional `{ identifier: "DID" }` for the Person or Organization who gave (which is assumed to be issuer if not supplied)
+  provider             optional `[{ "@type": "...", identifier: "..." }]` array of Person or Organization records who helped make this possible
+  recipient            optional `{ identifier: "DID" }` for receiving individual or organization if this is directly to an entity (as opposed to being part of an activity, which belong in things linkde by "fulfills")
   ==================== ====
 
 
@@ -71,8 +69,8 @@ Here are the verbs used for assertions -- many recorded in the mobile app by def
 
   ==================== ====
   @context             the schema (which is optional if the enclosing object already has it)
-  @type                recommended: type of the item being fulfilled, eg "DonateAction" or "Offer" or "PlanAction" or "TradeAction" -- and it may in turn have an "isPartOf" or "itemOffered.isPartOf" for a broader initiative
-  identifier           required reference to a previous claim, which should be a full URL
+  @type                recommended: type of the item being fulfilled, eg "Offer" or "DonateAction" or "TradeAction" or "PlanAction"
+  identifier           optional reference to a previous "Offer" or "DonateAction" or "TradeAction" or "PlanAction" claim, which should be a full URI (If there is no previous action, the type (eg. "DonateAction") alone can be helpful detail.)
   ==================== ====
 
 
@@ -97,6 +95,11 @@ Example:
 
 ..
 
+There are some similar concepts at schema.org:
+
+  - "Donate" is an act of giving a gift, typically toward an entity rather than a project (as opposed to a "Grant" for a goal). It is similar to "Give" but used to explicitly record that these is no reciprocation; the Endorser service recognizes that a GiveAction is a donation if a DonateAction is sent in the "fulfills" field (and if there is not TradeAction). Technically: `schema.org "DonateAction" <https://schema.org/DonateAction>`_
+
+  - "Grant" represents donations toward a goal or project (as opposed to "Donate" to an entity for whatever purpose they choose). This is not used by the Endorser service, preferring to keep a simple "Donate" for all this kind of activity with a "fulfills" link if attached to a wider Plan or Project. (Note that this isn't yet fully accepted at schema.org.) Technically: `schema.org "Grant" <https://schema.org/Grant>`_
 
 - "Loan Or Credit" represents temporary transfer of money. Technically: `schema.org "LoanOrCredit" <https://schema.org/LoanOrCredit>`_
 
@@ -114,13 +117,14 @@ Example:
   ============ ====
   @context     always the schema: "https://schema.org"
   @type        always the type: "PlanAction"
-  agent        optional DID of the proposing person or organization
+  agent        optional `{ identifier: "DID" }` for the proposing Person or Organization
   description  optional free-form explanation
   endTime      optional date when the planned activity will end
-  identifier   optional identifier for this plan, which should be a full URL
+  identifier   optional identifier for this plan, which should be a full URI
   image        optional image URL
   name         optional short name
   startTime    optional date when the planned activity will start
+  url          optional external URL for the project
   ============ ====
 
 Example:
@@ -138,7 +142,6 @@ Example:
     "startTime": "2022-07",
     "endTime": "2023-03"
   }
-
 ..
 
 
@@ -159,11 +162,11 @@ Example:
   availabilityEnds               optional time when this offer stops being available
   availabilityStarts             optional time when this offer becomes available
   description                    optional free-form explanation of conditions
-  identifier                     optional identifier for this offer, which should be a full URL
+  identifier                     optional identifier for this offer, which should be a full URI
   includesObject                 optional specific "TypeAndQuantityNode"; see "includesObject" table above
-  itemOffered                    optional description of the donation or service; see "itemOffered" table below
-  offeredBy                      optional (but recommended) individual or org doing the offer, who creates the claim
-  recipient                      optional individual or organization if this is directly to an entity (as opposed to being part of an activity or project)
+  itemOffered                    optional description of the item or service; see "itemOffered" table below
+  offeredBy                      optional (but recommended) `{ identifier: "..." }` individual or org doing the offer (which is assumed to be the issuer if not supplied)
+  recipient                      optional `{ identifier: "..." }` individual or organization if this is directly to an entity (as opposed to being part of an activity or project)
   ============================== ====
 
 
@@ -235,7 +238,7 @@ Note that the "includesObject" and "requiresOffersTotal" don't include an "@type
 
 Hopefully it's clear how to apply those assertions to the numbered scenarios above:
 
-  #. `"Give" <https://schema.org/GiveAction>`_ an 'object' to a 'recipient', obviously without fulfilling a "TradeAction" or any other reciprocal requirements. For promises, `"Offer" <https://schema.org/Offer>`_ an 'itemOffered'... time or money or even a `"Service" <https://schema.org/Service>`_.
+  #. `"Donate" <https://schema.org/GiveAction>`_ an 'object' to a 'recipient'. For promises, `"Offer" <https://schema.org/Offer>`_ an 'itemOffered'... time or money or even a `"Service" <https://schema.org/Service>`_.
 
       - One could also `"Grant" <https://schema.org/Grant>`_, though that is new to the schema.
 
