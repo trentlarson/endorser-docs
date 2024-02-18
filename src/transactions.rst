@@ -18,7 +18,7 @@ Here are a few scenarios:
 
 Here are the verbs used for assertions -- many recorded in the mobile app by default.
 
-A diagram with relationships between these objects is `here <./_static/entity-relationships.pdf>`_.
+A diagram showing successive relationships between these objects is `here <./_static/entity-relationships.pdf>`_.
 
 - "Join" shows attendance or membership in a group. Technically: `schema.org "JoinAction" <https://schema.org/JoinAction>`_
 

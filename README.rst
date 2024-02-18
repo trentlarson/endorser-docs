@@ -3,11 +3,16 @@ Endorser Docs
 
 Install tooling:
 
-* `pkgx +pip.pypa.io sh`
+* `pkgx +python +pip.pypa.io sh`
 
 * `pip install -U sphinx && python -m venv .venv`
 
-Setup: `pkgx +pip.pypa.io sh`
+Setup:
+
+```
+pkgx +pip.pypa.io sh
+source .venv/bin/activate
+```
 
 Build: `make html`
 
