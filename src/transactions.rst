@@ -39,7 +39,7 @@ A diagram showing successive relationships between these objects is `here <./_st
   description          optional free-form description of what is given
   agent                optional `{ identifier: "DID" }` for the Person or Organization who gave (which is assumed to be issuer if not supplied)
   provider             optional `[{ "@type": "...", identifier: "..." }]` array of Person or Organization records who helped make this possible
-  recipient            optional `{ identifier: "DID" }` for receiving individual or organization if this is directly to an entity (as opposed to being part of an activity, which belong in things linkde by "fulfills")
+  recipient            optional `{ identifier: "DID" }` for receiving individual or organization if this is directly to an entity (as opposed to being part of an activity, which belong in things linked by "fulfills")
   ==================== ====
 
 
