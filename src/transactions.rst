@@ -147,6 +147,8 @@ Example:
 
 - "Project" is for a large-scale initiative, typically associated with an organization for some long-term benefit. "Plan" is different because it aims at a more specific action at a point in time. Technically: `schema.org "Project" proposal <https://schema.org/Project>`_
 
+  - The Endorser service currently uses PlanAction because Project is a new addition to schema.org and still getting feedback. It is actually a subtype of Organization; it may make for more mature projects, and there is probably space for both, with a distinction between a long-lived project with stable members vs a shorter-lived event or activity plan. (Maybe there will be a path where PlanActions will contribute to Projects.)
+
 - "Offer" proposes a transfer or service, often with conditions or a price. When the proposal is fulfilled, there is a resulting "Give" or "Donate" or more complicated transfer such as "Trade". Technically: `schema.org "Offer" <https://schema.org/Offer>`_ (The opposite is a `"Demand" <https://schema.org/Demand>`_.)
 
 .. table:: Properties of an Offer at Endorser.ch
