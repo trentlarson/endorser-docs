@@ -33,13 +33,13 @@ A diagram showing successive relationships between these objects is `here <./_st
   ==================== ====
   @context             always the schema: "https://schema.org"
   @type                always the type: "GiveAction"
-  fulfills             optional Offer or DonateAction or GiveAction or TradeAction or PlanAction or array of them; see "fulfills" table below (This is not currently part of schema.org specs.)
-  identifier           optional identifier for this action, which should be a full URI
   object               optional item or service or array of them; see Give "object" table below
   description          optional free-form description of what is given
-  agent                optional `{ identifier: "DID" }` for the Person or Organization who gave (which is assumed to be issuer if not supplied)
-  provider             optional `[{ "@type": "...", identifier: "..." }]` array of Person or Organization records who helped make this possible
-  recipient            optional `{ identifier: "DID" }` for receiving individual or organization if this is directly to an entity (as opposed to being part of an activity, which belong in things linked by "fulfills")
+  agent                optional `{ identifier: "DID" }` for the Person who gave (as opposed to a non-Person provider) (For multiple individual agents, a separate claim for each is recommended, or aggregate into a PlanAction or Project or Organization 'provider'.) A missing value means the giver is unnamed.
+  provider             optional `[{ "@type": "...", identifier: "..." }]` array of PlanAction or Project or Organization records who helped make this possible (since non-Person entities are worth separating), like the "agent" but for a non-Person
+  recipient            optional `{ identifier: "DID" }` for receiving Person if this is directly to an entity (as opposed to being part of a non-Person, which belong in things linked by "fulfills") (For multiple individual recipients, a separate claim for each is recommended, or declare it "fulfills" an aggregate PlanAction or Project or Organization.) A missing value means the recipient is unnamed, which may be the case if the benficiary is a non-person (listed in "fulfills").
+  fulfills             optional `[{ "@type": "...", identifier: "..." }]` Offer or DonateAction or GiveAction or TradeAction or PlanAction which is the target, like the "recipient" but for a non-Person, and may be an array (eg. when tagged as a DonateAction as well as a contributor to a PlanAction); see "fulfills" table below (This is not currently part of schema.org specs.) Note that the type can be helpful even if no identifier is provided, eg. a "TradeAction" or "DonateAction" to mark things given with or without reciprocation; put this last if this is in an array, eg. with a fulfilled plan. A single fulfills relationship is preferred (and multiple may not be fully tracked), though this may also involve an individual recipient.
+  identifier           optional identifier for this action, which should be a full URI
   ==================== ====
 
 
@@ -60,20 +60,6 @@ A diagram showing successive relationships between these objects is `here <./_st
 
 
 
-
-.. table:: Properties of a Give "fullfills" at Endorser.ch
-
-  ==================== ====
-
-  Name                 Description
-
-  ==================== ====
-  @context             the schema (which is optional if the enclosing object already has it)
-  @type                recommended: type of the item being fulfilled, eg "Offer" or "DonateAction" or "TradeAction" or "PlanAction"
-  identifier           optional reference to a previous "Offer" or "DonateAction" or "TradeAction" or "PlanAction" claim, which should be a full URI (If there is no previous action, the type (eg. "DonateAction") alone can be helpful detail.)
-  ==================== ====
-
-
 Example:
 
 .. code:: json
@@ -87,10 +73,15 @@ Example:
       "amountOfThisGood": 1,
       "unitCode": "HUR"
     },
-    "fulfills": {
-      "@type": "Offer",
-      "identifier": "https://endorser.ch/entity/ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    }
+    "fulfills": [
+      {
+        "@type": "Offer",
+        "identifier": "https://endorser.ch/entity/ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+      },
+      {
+        "@type": "DonateAction"
+      }
+    ]
   }
 
 ..
@@ -161,14 +152,13 @@ Example:
   @context                       always the schema: "https://schema.org"
   @type                          always the type: "Offer"
   actionAccessibilityRequirement optional declaration of conditions for this offer; see "ActionAccessSpecification" table below (This is not currently part of schema.org specs on Offer.)
-  availabilityEnds               optional time when this offer stops being available
-  availabilityStarts             optional time when this offer becomes available
   description                    optional free-form explanation of conditions
   identifier                     optional identifier for this offer, which should be a full URI
   includesObject                 optional specific "TypeAndQuantityNode"; see "includesObject" table above
   itemOffered                    optional description of the item or service; see "itemOffered" table below
-  offeredBy                      optional (but recommended) `{ identifier: "..." }` individual or org doing the offer (which is assumed to be the issuer if not supplied)
+  offeredBy                      optional (but recommended for clarity) `{ identifier: "..." }` individual or org doing the offer, which is assumed to be the issuer if not supplied (and which the Endorser service will reject if a DID different from the issuer)
   recipient                      optional `{ identifier: "..." }` individual or organization if this is directly to an entity (as opposed to being part of an activity or project)
+  validThrough                   optional time after which this offer is no longer available
   ============================== ====
 
 
@@ -182,7 +172,7 @@ Example:
   @context             optional schema "https://schema.org" (which is assumed if the enclosing object already has it)
   @type                optional type of this item, eg "CreativeWork" or "Service" (but recommended to plan future expansion)
   description          optional free-form explanation of deliverable or work contribution
-  isPartOf             optional reference to a bigger activity (AKA "`PlanAction <https://schema.org/PlanAction>`_") or "`Project <https://schema.org/Project>`_" (This is not currently part of schema.org specs on all "itemOffered" objects.)
+  isPartOf             optional reference to a bigger activity (AKA "`PlanAction <https://schema.org/PlanAction>`_") or "`Project <https://schema.org/Project>`_" (This is not currently part of schema.org specs on all "itemOffered" objects. It is similar to the "fulfills" in a GiveAction.)
   ==================== ====
 
 
@@ -210,8 +200,6 @@ Example:
     "@context": "https://schema.org",
     "@type": "Offer",
     "offeredBy": "did:ethr:0x111c4aCD2B13e26137221AC86c2c23730c9A315A",
-    "availabilityStarts": "2022-07",
-    "availabilityEnds": "2023-03",
     "includesObject": { "amountOfThisGood": 2, "unitCode": "HUR" },
     "itemOffered": {
       "@type": "CreativeWork",
@@ -221,7 +209,8 @@ Example:
     "actionAccessibilityRequirement": {
       "requiresOffers": 3,
       "requiresOffersTotal": { "amountOfThisGood": 5, "unitCode": "HUR" }
-    }
+    },
+    "validThrough": "2023-03"
   }
 
 
@@ -240,13 +229,13 @@ Note that the "includesObject" and "requiresOffersTotal" don't include an "@type
 
 Hopefully it's clear how to apply those assertions to the numbered scenarios above:
 
-  #. `"Donate" <https://schema.org/GiveAction>`_ an 'object' to a 'recipient'. For promises, `"Offer" <https://schema.org/Offer>`_ an 'itemOffered'... time or money or even a `"Service" <https://schema.org/Service>`_.
+  #. `"Give" <https://schema.org/GiveAction>`_ an 'object' to a 'recipient'. For promises, `"Offer" <https://schema.org/Offer>`_ an 'itemOffered'... time or money or even a `"Service" <https://schema.org/Service>`_.
 
       - One could also `"Grant" <https://schema.org/Grant>`_, though that is new to the schema.
 
   #. `"Ask" <https://schema.org/AskAction>`_ for 'object', or `"Demand" <https://schema.org/Demand>`_ some help or resource 'itemOffered'.
 
-  #. `"Offer" <https://schema.org/Offer>`_ some help or resource, eg. some 'eligibleQuantity' of 'itemOffered' at a 'price' when 'availabilityStarts'.
+  #. `"Offer" <https://schema.org/Offer>`_ some help or resource, eg. some 'eligibleQuantity' of 'itemOffered' at a 'price' until 'validThrough'.
 
       - One could also `"LoanOrCredit" <https://schema.org/LoanOrCredit>`_ some 'amount' of 'currency' for 'loanTerm'.
 
@@ -269,7 +258,7 @@ In our Endorser app, you can try many of these such as Time or Money Donations.
 
     - `The EP-PLAN ontology <https://trustlens.github.io/EP-PLAN/>`_ includes a "Plan" as well.
 
-    - Ontology Design Patterns has concepts in their DUL section for `Plan <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Plan>`_ and `Goal <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Goal>`_, and in their CP section for `"basicplanexecution.owl" <http://www.ontologydesignpatterns.org/cp/owl/basicplanexecution.owl>`_ among `other definittions <http://www.ontologydesignpatterns.org/cp/owl/>`_.
+    - Ontology Design Patterns has concepts in their DUL section for `Plan <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Plan>`_ and `Goal <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Goal>`_, and in their CP section for `"basicplanexecution.owl" <http://www.ontologydesignpatterns.org/cp/owl/basicplanexecution.owl>`_ among `other definitions <http://www.ontologydesignpatterns.org/cp/owl/>`_.
 
     - There's a `FOAF Project <http://xmlns.com/foaf/0.1/#term_Project>`_.
 

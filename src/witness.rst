@@ -4,9 +4,9 @@ Witness
 
 ... to show gratitude
 
-How can we share with someone a signed record of seeing them, revealing our gratitude such that they can see and appreciate the recognition but without making it fully public?
+How can we share with someone a signed record of seeing them, revealing our gratitude such that they can see and appreciate the recognition but without making their ID fully public?
 
-  * Declare an "Event" about an "agent", with a "description" of what happened. Technically: `Event by Bio Vocabulary <https://vocab.org/bio/#event>`_
+  * Declare a "GiveAction" or "Event" about an "agent", with a "description" of what happened. Technically: `"GiveAction" <https://schema.org/GiveAction>`_ or `Event by Bio Vocabulary <https://vocab.org/bio/#event>`_
 
 **Other References**
 
