@@ -14,7 +14,7 @@ This service is not good for totally private claims. (Try Mastodon or Nostr or A
 
   * All claim payloads are expected to be in `JSON-LD <https://json-ld.org/>`_ format, which basically means that there are two properties: ``@context`` and ``@type``.
 
-    * As shown in pages like `transactions <transactions>`_, we typically recommend `schema.org <https://schema.org>`_ as templates for claim data.
+    * As shown in pages like `transactions <transactions.html>`_, we typically recommend `schema.org <https://schema.org>`_ as templates for claim data.
 
   * To `retrieve claims, use GET <https://test.endorser.ch:8000/api-docs/#/claim/get_api_claim>`_ to get the original claim in a ``claim`` field along with some other fields such as the server ID, date issued, etc. An example is available directly in a browser (though much data will be hidden): `https://test.endorser.ch:8000/api/claim <https://test.endorser.ch:8000/api/claim>`_
 
@@ -31,6 +31,16 @@ This service is not good for totally private claims. (Try Mastodon or Nostr or A
       * Note that the handle ID can be used as an editing mechanism: whenever a claim has an ``identifier`` property, the handle ID can be used to retrieve the latest version with that identifier.
 
   * All data (including source claims) are filtered such that fields with DIDs are hidden if the originator has not allowed visibility.
+
+  * There are a few types of identifiers.
+
+    * An ``identifier`` is a global identifier put on a claim by the client; you'll see in in may examples on other pages, eg. `a Give in transactions <transactions.html#id4>`_. It is optional; if not supplied, the ``handleId`` is typically useful as a global ID for the claim. But in this server the ``identifier`` is only used on inputs; subsequent references should be explicit identifiers like ``handleId`` or ``lastClaimId``.
+
+    * A ``handleId`` is created for all claims, a global reference to the claim; it may have been assigned by the client if a global ``identifier`` was included with the claim. The ``handleId`` is meant to be persistent across changes, so if the originator needs to update a previous claim then the later, editing claim will share the same ``handleId`` and will be considered the most correct version.
+
+    * A ``lastClaimId`` is used for an edit of a previous claim. It is typically not global: since it references a previous claim in this chain, it can be a local identifier (and thus the ``jwtId`` is typically for it). That claim will be assigned the same ``handleId`` as the claim it is editing. (It is important to have this direct reference and not just a ``handleId`` because the submitter is then clear on exactly which claim was last seen; when there are multiple agents who can edit then this provides certainty on which was the last edit seen by the submitter. So this is preferred on inputs because it is more accurate.)
+
+    * A ``jwtId`` is an internal DB ID for every claim submitted. It is often used for the ``lastClaimId``.
 
 * The server maintains control of visibility for users via the `network <https://test.endorser.ch:8000/api-docs/#/network>`_ endpoints.
 
