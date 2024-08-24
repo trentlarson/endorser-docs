@@ -39,7 +39,8 @@ A diagram showing successive relationships between these objects is `here <./_st
   provider             optional `[{ "@type": "...", identifier: "..." }]` array of PlanAction or Project or Organization records who helped make this possible (since non-Person entities are worth separating), like the "agent" but for a non-Person
   recipient            optional `{ identifier: "DID" }` for receiving Person if this is directly to an entity (as opposed to being part of a non-Person, which belong in things linked by "fulfills") (For multiple individual recipients, a separate claim for each is recommended, or declare it "fulfills" an aggregate PlanAction or Project or Organization.) A missing value means the recipient is unnamed, which may be the case if the benficiary is a non-person (listed in "fulfills").
   fulfills             optional `[{ "@type": "...", identifier: "..." }]` Offer or DonateAction or GiveAction or TradeAction or PlanAction which is the target, like the "recipient" but for a non-Person, and may be an array (eg. when tagged as a DonateAction as well as a contributor to a PlanAction); see "fulfills" table below (This is not currently part of schema.org specs.) Note that the type can be helpful even if no identifier is provided, eg. a "TradeAction" or "DonateAction" to mark things given with or without reciprocation; put this last if this is in an array, eg. with a fulfilled plan. A single fulfills relationship is preferred (and multiple may not be fully tracked), though this may also involve an individual recipient.
-  identifier           optional identifier for this action, which should be a full URI
+  identifier           optional identifier for this action, which should be a full URI (If `lastClaimId` is provided then this is unnecessary because this shares the same ID.)
+  lastClaimId          optional reference to the previous plan which is being edited by this one (This is typically assigned by the system but may be a hash or SAID. It is a pointer to the most recent edit, not the first record.)
   ==================== ====
 
 
@@ -111,8 +112,9 @@ There are some similar concepts at schema.org:
   agent        optional `{ identifier: "DID" }` for the proposing Person or Organization
   description  optional free-form explanation
   endTime      optional date when the planned activity will end
-  identifier   optional identifier for this plan, which should be a full URI
+  identifier   optional identifier for this plan, which should be a full URI  (If `lastClaimId` is provided then this is unnecessary because this shares the same ID.)
   image        optional image URL
+  lastClaimId  optional reference to the previous plan which is being edited by this one (This is typically assigned by the system but may be a hash or SAID. It is a pointer to the most recent edit, not the first record.)
   name         optional short name
   startTime    optional date when the planned activity will start
   url          optional external URL for the project
@@ -153,9 +155,10 @@ Example:
   @type                          always the type: "Offer"
   actionAccessibilityRequirement optional declaration of conditions for this offer; see "ActionAccessSpecification" table below (This is not currently part of schema.org specs on Offer.)
   description                    optional free-form explanation of conditions
-  identifier                     optional identifier for this offer, which should be a full URI
+  identifier                     optional identifier for this offer, which should be a full URI (If `lastClaimId` is provided then this is unnecessary because this shares the same ID.)
   includesObject                 optional specific "TypeAndQuantityNode"; see "includesObject" table above
   itemOffered                    optional description of the item or service; see "itemOffered" table below
+  lastClaimId                    optional reference to the previous plan which is being edited by this one (This is typically assigned by the system but may be a hash or SAID. It is a pointer to the most recent edit, not the first record.)
   offeredBy                      optional (but recommended for clarity) `{ identifier: "..." }` individual or org doing the offer, which is assumed to be the issuer if not supplied (and which the Endorser service will reject if a DID different from the issuer)
   recipient                      optional `{ identifier: "..." }` individual or organization if this is directly to an entity (as opposed to being part of an activity or project)
   validThrough                   optional time after which this offer is no longer available
