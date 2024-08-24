@@ -3,19 +3,18 @@ Endorser Docs
 
 Install tooling:
 
-* `pkgx +python +pip.pypa.io sh`
+```
+pkgx +python +pip.pypa.io sh
+pip install -U sphinx && python -m venv .venv
+`
 
-* `pip install -U sphinx && python -m venv .venv`
-
-Setup:
+Setup & Build:
 
 ```
-pkgx +pip.pypa.io sh
+pkgx +python +pip.pypa.io sh
 source .venv/bin/activate
+make html
+open build/html/index.html
 ```
 
-Build: `make html`
-
-View: `open build/html/index.html`
-
-Deploy: `scp -i ... -r build/* ubuntu@endorser.ch:uport-demo/public/doc/`
+Deploy: `scp -i ~/.ssh/.....pem -r build/* ubuntu@endorser.ch:uport-demo/public/doc/`
