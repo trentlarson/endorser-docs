@@ -104,6 +104,19 @@ Selected History
 
 - Always appreciate how far we've come. :-) For example, this used to be `based on uPort <https://github.com/trentlarson/uport-demo/blob/5c3d7fcb751ad34ed10ebb7adab650b2cfebb7d1/src/components/Welcome.js#L96>`_. The `first shared transaction was on Jan 2019 <https://endorser.ch/reportClaim?claimId=01D25AVGQG1N8E9JNGK7C7DZRD>`_ (before the Verifiable Credentials Working Draft was submitted).
 
+- The original Endorser Mobile application provided functionality to work with cryptographic claims, but the focus now is on `Time Safari <https://timesafari.org>`_.
+
+  - See the `Tutorial Videos <https://endorser.ch/doc-tutorial>`_.
+
+  - The previous mobile app is on `Apple's App Store`_ and was on `Google Play`_ before it was deleted (rather aggressively, if you ask me).
+
+.. _`Apple's App Store`: https://apps.apple.com/us/app/endorser-mobile/id1556368693
+.. _`Google Play`: https://play.google.com/store/apps/details?id=ch.endorser.mobile
+
+  - The `source is here <https://github.com/trentlarson/endorser-mobile>`_
+
+  - There are `sample claims <https://endorser.ch/doc-sample-claims>`_ to scan into it.
+
 - There have been some changes to the standard schema. The server allows anything to be sent so these mostly affect the client, where very old claims may have slightly different format on retrieval.
 
   - Agreements are done with 'AgreeAction'. 'Confirmation' was used until 2020-06-15.
@@ -112,8 +125,10 @@ Selected History
 
   - On Offer objects:
 
-    - Specific quantities are found in 'includesObject' with a 'TypeAndQuantityNode' object, and the 'CreativeWork' and description of the offering are in 'itemOffered'. Quantities were found in 'itemOffered' (until... time yet unknown).
+    - Any PlanAction to which this contributes is in 'fulfills'. This used to be in 'itemOffered.isPartOf'.
 
-    - The description of the work is in 'itemOffered.description'. This used to be in 'termsOfService' (until... time yet unknown).
+    - The description of the work is in 'incluedsObject.description'. This used to be in 'itemOffered.description', and before that was in 'termsOfService' (until... time yet unknown).
+
+    - Specific quantities are found in 'includesObject' with a 'TypeAndQuantityNode' object. Quantities were found in 'itemOffered' (until... time yet unknown).
 
     - Terms of the offer are found in 'description'. It used to be in 'termsOfService' (until... time yet unknown).

@@ -5,20 +5,14 @@ Intro to Community Credentials
 Quick Start
 -----------
 
-  - See the `Tutorial Videos <https://endorser.ch/doc-tutorial>`_.
-
-  - The mobile app is on `Google Play`_ and `Apple's App Store`_.
-
-.. _`Google Play`: https://play.google.com/store/apps/details?id=ch.endorser.mobile
-.. _`Apple's App Store`: https://apps.apple.com/us/app/endorser-mobile/id1556368693
-
+  - See `Time Safari <https://timesafari.org>`_ for many of the claims on our server -- 'give' claims in the feed, plus 'project' claims, and 'offer' claims on those projects.
 
 Overview
 --------
 
 We support the growth of community networks at whatever level of privacy you prefer.
 
-  Meta (AKA Facebook) has created an engaging user interface around networks but they control it all; Google allows more control but still has access to your data and shares it. Let's build networks where individuals have as much control as possible while still allowing discovery.
+  Meta (AKA Facebook) has created an engaging user interface around networks but they control it all; Google allows more control but still has access to your data and shares it; NextDoor is another service that holds the data you submit. Let's build networks where individuals have as much control as possible while still allowing discovery.
 
 This is a set of projects to do just that, with the following features:
 
@@ -91,20 +85,14 @@ Finally, see :doc:`Future, Past, and Related work <future>`.
 Other Content
 -------------
 
-  - `These demos <https://endorser.ch/doc-tutorial>`_ show the basic user experience quickly.
-
   - Source Code
 
-    - the `server that stores and reports on claims <https://github.com/trentlarson/endorser-ch>`_
+    - for the `server that stores and reports on claims <https://github.com/trentlarson/endorser-ch>`_
 
-    - the `mobile app to create verifiable credentials <https://github.com/trentlarson/endorser-mobile>`_
+    - for the `Time Safari app based on those claims <https://gitea.anomalistdesign.com/trent_larson/crowd-funder-for-time-pwa>`_.
 
-    - this `website <https://github.com/trentlarson/uport-demo>`_
-
-  - Mobile app is in the `Apple Store <https://apps.apple.com/us/app/endorser-mobile/id1556368693>`_ and the `Play Store <https://play.google.com/store/apps/details?id=ch.endorser.mobile>`_
+    - for this `website <https://github.com/trentlarson/uport-demo>`_ and `documentation <https://github.com/trentlarson/endorser-docs>`_.
 
   - The `Endorser.ch Privacy Policy <https://endorser.ch/privacy-policy>`_ emphasizes these concepts.
 
-  - There is `a diagram for a simple workflow <https://whimsical.com/liberty-certification-KS6ocCfbFWSPhY4uKFWsTx>`_.
-
-  - There are `sample claims <https://endorser.ch/doc-sample-claims>`_ to scan into the mobile app.
+  - There is `a diagram for the workflow for making decisions about people with whom to work or play <https://whimsical.com/liberty-certification-KS6ocCfbFWSPhY4uKFWsTx>`_.

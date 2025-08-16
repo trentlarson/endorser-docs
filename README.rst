@@ -17,4 +17,4 @@ make html
 open build/html/index.html
 ```
 
-Deploy: `scp -i ~/.ssh/.....pem -r build/* ubuntu@endorser.ch:uport-demo/public/doc/`
+Deploy: `scp -i ~/.ssh/.....pem -r build/* ubuntu@endorser.ch:uport-demo/build/doc/`
