@@ -4,7 +4,7 @@ Server Overview
 
 The server holds a log of signed claims. That is it's main purpose; other functions are for convenience or for features that are temporary while full P2P features are implemented.
 
-This service is not good for totally private claims. (Try Mastodon or Nostr or ACDCs.)
+This service currently doesn't support totally private claims. (Try Mastodon or ACDCs, or wait for some of :doc:`our future work <future>`.)
 
 * Use `/api/claim <https://test.endorser.ch:8000/api-docs/#/claim>`_ endpoints to record and retrieve claims, via standard REST.
 
@@ -32,7 +32,7 @@ This service is not good for totally private claims. (Try Mastodon or Nostr or A
 
   * All data (including source claims) are filtered such that fields with DIDs are hidden if the originator has not allowed visibility.
 
-  * There are a few types of identifiers.
+  * There are a few types of identifiers. (These are also described in the `endorser-ch README.md <https://github.com/trentlarson/endorser-ch/blob/master/README.md#claim-ids>`_.)
 
     * An ``identifier`` is a global identifier put on a claim by the client; you'll see in in may examples on other pages, eg. `a Give in transactions <transactions.html#id4>`_. It is optional; if not supplied, the ``handleId`` is typically useful as a global ID for the claim. But in this server the ``identifier`` is only used on inputs; subsequent references should be explicit identifiers like ``handleId`` or ``lastClaimId``.
 

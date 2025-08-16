@@ -57,6 +57,7 @@ A diagram showing successive relationships between these objects is `here <./_st
   @type                the type of this item, eg "TypeAndQuantityNode"
   amountOfThisGood     required numeric amount
   unitCode             required unit of amount, eg "HUR" for hour, "USD" for US Dollar, "BTC" for Bitcoin. `As specified <https://schema.org/unitCode>`_, this follows `UN/CEFACT codes <https://unece.org/trade/uncefact>`_, particularly `for time (Recommendation No. 20 - Revision 17 (Annexes I to III)) <https://unece.org/sites/default/files/2021-06/rec20_Rev17e-2021.xlsx>`_ and `for currency (ISO-4217) <https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xls>`_.
+  description          optional free-form explanation of deliverable or work contribution (usually just for Offer where more descriptive text is useful)
   ==================== ====
 
 
@@ -112,6 +113,7 @@ There are some similar concepts at schema.org:
   agent        optional `{ identifier: "DID" }` for the proposing Person or Organization
   description  optional free-form explanation
   endTime      optional date when the planned activity will end
+  fulfills     optional PlanAction object (eg. with 'lastclaimId') to which this plan contributes
   identifier   optional identifier for this plan, which should be a full URI  (If `lastClaimId` is provided then this is unnecessary because this shares the same ID.)
   image        optional image URL
   lastClaimId  optional reference to the previous plan which is being edited by this one (This is typically assigned by the system but may be a hash or SAID. It is a pointer to the most recent edit, not the first record.)
@@ -155,28 +157,14 @@ Example:
   @type                          always the type: "Offer"
   actionAccessibilityRequirement optional declaration of conditions for this offer; see "ActionAccessSpecification" table below (This is not currently part of schema.org specs on Offer.)
   description                    optional free-form explanation of conditions
+  fulfills                       optional reference to a bigger activity (AKA "`PlanAction <https://schema.org/PlanAction>`_") or "`Project <https://schema.org/Project>`_" (This is not currently part of schema.org specs on all "itemOffered" objects. It is similar to the "fulfills" in a GiveAction.)
   identifier                     optional identifier for this offer, which should be a full URI (If `lastClaimId` is provided then this is unnecessary because this shares the same ID.)
-  includesObject                 optional specific "TypeAndQuantityNode"; see "includesObject" table above
-  itemOffered                    optional description of the item or service; see "itemOffered" table below
+  includesObject                 required specifics about what is offered; see "includesObject" table above
   lastClaimId                    optional reference to the previous plan which is being edited by this one (This is typically assigned by the system but may be a hash or SAID. It is a pointer to the most recent edit, not the first record.)
   offeredBy                      optional (but recommended for clarity) `{ identifier: "..." }` individual or org doing the offer, which is assumed to be the issuer if not supplied (and which the Endorser service will reject if a DID different from the issuer)
   recipient                      optional `{ identifier: "..." }` individual or organization if this is directly to an entity (as opposed to being part of an activity or project)
   validThrough                   optional time after which this offer is no longer available
   ============================== ====
-
-
-.. table:: Properties of an Offer "itemOffered" at Endorser.ch
-
-  ==================== ====
-
-  Name                 Description
-
-  ==================== ====
-  @context             optional schema "https://schema.org" (which is assumed if the enclosing object already has it)
-  @type                optional type of this item, eg "CreativeWork" or "Service" (but recommended to plan future expansion)
-  description          optional free-form explanation of deliverable or work contribution
-  isPartOf             optional reference to a bigger activity (AKA "`PlanAction <https://schema.org/PlanAction>`_") or "`Project <https://schema.org/Project>`_" (This is not currently part of schema.org specs on all "itemOffered" objects. It is similar to the "fulfills" in a GiveAction.)
-  ==================== ====
 
 
 .. table:: Properties of an Offer "actionAccessibilityRequirement" property at Endorser.ch
